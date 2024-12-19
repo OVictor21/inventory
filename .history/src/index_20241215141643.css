@@ -1,0 +1,311 @@
+/* 
+.nav-body {
+  width: 35vw;
+  height: 65vw;
+  background-color: #D3D3D3;
+  
+} */
+.logo {
+  background-size: cover;       
+  background-repeat: no-repeat; 
+  background-position: center;  
+  height: auto;          
+  width:9rem ;               
+}
+
+.sign-in{
+  width: 40vw;
+  height: 65vw;
+  left: 45vw;
+  top: -10vw;
+  overflow: hidden;
+}
+
+.login {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  overflow: hidden;
+  
+}
+
+.nav-body {
+  flex-grow: 1;
+  background-color: #D3D3D3;
+  width: 35vw;
+  height: 65vw;
+}
+
+.text{
+  top: 5vw;
+  left: 6vw;
+  background: linear-gradient(180deg, rgb(51, 85, 136) 13.5%, rgb(206, 208, 214) 100%);
+  -webkit-background-clip: text !important;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-fill-color: transparent;
+  font-family: "Montserrat-Bold", Helvetica;
+  font-weight: 700;
+  color: transparent;
+  font-size: 4vw;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+
+
+.text-wrapper-8 {
+  background: linear-gradient(180deg, rgb(51, 85, 136) 13.5%, rgb(206, 208, 214) 100%);
+  -webkit-background-clip: text !important;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-fill-color: transparent;
+  font-family: "Montserrat-Bold", Helvetica;
+  font-weight: 600;
+  color: transparent;
+  font-size: 2vw;
+  letter-spacing: 0;
+  line-height: normal;
+  top: 13vw;
+  left: 6vw;
+}
+
+.email-text{
+  font-size: 1.2vw;
+  
+}
+
+.email{
+  top: 17vw;
+  left: 6vw;
+}
+
+.email-in{
+  top: 23vw;
+  left: 6vw;
+  width: 80%;
+  max-width: 80%;
+  height: 5%;
+}
+
+.pass{
+  top: 27vw;
+  left: 6vw;
+}
+
+.pass-in{
+  top: 33vw;
+  left: 6vw;
+  width: 80%;
+  max-width: 80%;
+  height: 5%;
+
+}
+
+.text-wrapper-7{
+  font-family: "Montserrat-Regular", Helvetica;
+  font-weight: 400;
+  color: #00000061;
+  font-size: 1.3vw;
+  letter-spacing: 0;
+  line-height: normal;
+  top: 30vw;
+  text-decoration: none;
+  right: 2vw;
+}
+
+
+
+.sign-btn{
+  background: linear-gradient(180deg, rgb(51, 85, 136) 93.5%, rgb(206, 208, 214) 97%);
+  font-family: "Montserrat-Bold", Helvetica;
+  font-weight: 700;
+  font-size: 1.5rem;
+  letter-spacing: 0;
+  line-height: normal;
+  width: 80%;
+  height: 3rem;
+  top: 42vw;
+  left: 6vw;
+  /* box-shadow: 0px 22px 75px #00000040; */
+}
+
+
+.acct{
+  font-family: "Montserrat-Regular", Helvetica;
+  font-weight: 700;
+  color: #000000;
+  font-size: 1.5vw;
+  letter-spacing: 0;
+  line-height: normal;
+  top: 52vw;
+  left: 6vw;
+}
+
+.acct-1{
+  font-family: "Montserrat-Bold", Helvetica;
+  font-weight: 700;
+  color: rgb(51, 85, 136);
+  font-size: 1.5vw;
+  text-decoration: none;
+  letter-spacing: 0;
+  line-height: normal;
+  top: 52vw;
+  right: 3vw;
+}
+
+
+
+.pass-text{
+font-size: 1.2vw;
+}
+.footer-body {
+  background-color: #343a40; /* Example background color */
+  text-align: center;
+  padding: 1rem 0;
+  margin-top: auto; /* Pushes the footer to the bottom */
+}
+
+
+/* SIGN UP  */
+
+/* General Styles */
+.nav-body {
+  flex-grow: 1;
+  background-color: #D3D3D3;
+  width: 35vw;
+  height: 70vw;
+}
+
+.logo {
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  height: auto;
+  width: 9rem;
+}
+
+.sign-up {
+  width: 40vw;
+  height: 70vw;
+  left: 45vw;
+  top: -10vw;
+  overflow: hidden;
+}
+
+/* Sign-Up Heading Styles */
+.text {
+  top: 5vw;
+  left: 6vw;
+  background: linear-gradient(180deg, rgb(51, 85, 136) 13.5%, rgb(206, 208, 214) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-family: "Montserrat-Bold", Helvetica;
+  font-weight: 700;
+  font-size: 4vw;
+}
+
+.text-wrapper-8 {
+  top: 13vw;
+  left: 6vw;
+  background: linear-gradient(180deg, rgb(51, 85, 136) 13.5%, rgb(206, 208, 214) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-family: "Montserrat-Bold", Helvetica;
+  font-weight: 600;
+  font-size: 2vw;
+}
+
+/* Form Field Styles */
+.name-text,
+.email-text,
+.pass-text,
+.confirm-pass-text {
+  font-size: 1.2vw;
+}
+
+.name {
+  top: 17vw;
+  left: 6vw;
+}
+
+.name-in {
+  top: 20vw;
+  left: 6vw;
+  width: 80%;
+}
+
+.email {
+  top: 24vw;
+  left: 6vw;
+}
+
+.email-in {
+  top: 27vw;
+  left: 6vw;
+  width: 80%;
+}
+
+.pass {
+  top: 31vw;
+  left: 6vw;
+}
+
+.pass-in {
+  top: 34vw;
+  left: 6vw;
+  width: 80%;
+}
+
+.confirm-pass {
+  top: 38vw;
+  left: 6vw;
+}
+
+.confirm-pass-in {
+  top: 41vw;
+  left: 6vw;
+  width: 80%;
+}
+
+/* Sign-Up Button */
+.sign-btn {
+  background: linear-gradient(180deg, rgb(51, 85, 136) 93.5%, rgb(206, 208, 214) 97%);
+  font-family: "Montserrat-Bold", Helvetica;
+  font-weight: 700;
+  font-size: 1.5rem;
+  width: 80%;
+  height: 3rem;
+  top: 47vw;
+  left: 6vw;
+}
+
+/* Account Links */
+.acct {
+  font-family: "Montserrat-Regular", Helvetica;
+  font-weight: 700;
+  color: #000000;
+  font-size: 1.5vw;
+  top: 55vw;
+  left: 6vw;
+}
+
+.acct-1 {
+  font-family: "Montserrat-Bold", Helvetica;
+  font-weight: 700;
+  color: rgb(51, 85, 136);
+  font-size: 1.5vw;
+  text-decoration: none;
+  top: 55vw;
+  right: 3vw;
+}
+
+/* Footer */
+.footer-bodyY {
+  background-color: #343a40;
+  text-align: center;
+  padding: 1rem 0;
+  margin-top: auto;
+}

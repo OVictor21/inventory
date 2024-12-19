@@ -1,0 +1,45 @@
+
+nav {
+  background-color: transparent;
+  background: linear-gradient(180deg, rgb(93, 145, 194) 77.5%, rgb(206, 208, 214) 97.5%);
+
+}
+
+.navbar-brand img {
+  max-width: 10vw;
+  min-width: 5vw;
+}
+
+.nav-link.nav-text-current {
+  font-family: "Montserrat", Helvetica;
+  font-weight: 700;
+  color: #ffffff;
+  font-size: 1.5vw;
+}
+
+.nav-link.nav-text {
+  font-family: "Montserrat", Helvetica;
+  font-weight: 400;
+  color: #ffffff;
+  font-size: 1.5vw;
+}
+
+.nav-link.nav-text-2 {
+  font-family: "Montserrat", Helvetica;
+  font-weight: 600;
+  color: rgb(136, 86, 51);
+  font-size: 1.2vw;
+}
+
+.background {
+  background-color: #000021;
+}
+
+.background-image {
+  background-image: url('/public/back.png');
+  background-size: cover;       /* Ensures the image covers the entire element */
+  background-repeat: no-repeat; /* Prevents the image from repeating */
+  background-position: center;  /* Centers the image */
+  min-height: 100vh;            /* Full height of the viewport */
+  color: white;                 /* Text color for contrast */
+}

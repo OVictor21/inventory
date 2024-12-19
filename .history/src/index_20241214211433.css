@@ -1,0 +1,335 @@
+
+.nav-body {
+  width: 35vw;
+  height: 65vw;
+  background-color: #D3D3D3;
+}
+/* .background-image {
+  background-image: url('/public/back.png');
+  background-size: cover;       
+  background-repeat: no-repeat; 
+  background-position: center;  
+  min-height: 100vh;          
+  color: white;                 
+} */
+
+.sign-in{
+  width: 50vw;
+  height: 65vw;
+  /* box-shadow: 7px 37px 55px #00000040, 0px -54px 200px #00000040; */
+  left: 45vw;
+  top: 0;
+  overflow: hidden;
+}
+
+
+.text{
+  top: 5vw;
+  left: 6vw;
+  background: linear-gradient(180deg, rgb(51, 85, 136) 13.5%, rgb(206, 208, 214) 100%);
+  -webkit-background-clip: text !important;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-fill-color: transparent;
+  font-family: "Montserrat-Bold", Helvetica;
+  font-weight: 700;
+  color: transparent;
+  font-size: 4vw;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+
+
+.text-wrapper-8 {
+  background: linear-gradient(180deg, rgb(51, 85, 136) 13.5%, rgb(206, 208, 214) 100%);
+  -webkit-background-clip: text !important;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-fill-color: transparent;
+  font-family: "Montserrat-Bold", Helvetica;
+  font-weight: 600;
+  color: transparent;
+  font-size: 2vw;
+  letter-spacing: 0;
+  line-height: normal;
+  top: 13vw;
+  left: 6vw;
+}
+
+.email-text{
+  font-size: 1.2vw;
+  
+}
+
+.email{
+  top: 17vw;
+  left: 6vw;
+}
+
+.email-in{
+  top: 23vw;
+  left: 6vw;
+  width: 80%;
+  max-width: 80%;
+  height: 5%;
+}
+
+.pass{
+  top: 27vw;
+  left: 6vw;
+}
+
+.pass-in{
+  top: 33vw;
+  left: 6vw;
+  width: 80%;
+  max-width: 80%;
+  height: 5%;
+
+}
+
+.text-wrapper-7{
+  font-family: "Montserrat-Regular", Helvetica;
+  font-weight: 400;
+  color: #00000061;
+  font-size: 1.3vw;
+  letter-spacing: 0;
+  line-height: normal;
+  top: 30vw;
+  text-decoration: none;
+  right: 6vw;
+}
+
+
+
+.sign-btn{
+  background: linear-gradient(180deg, rgb(51, 85, 136) 93.5%, rgb(206, 208, 214) 97%);
+  font-family: "Montserrat-Bold", Helvetica;
+  font-weight: 700;
+  font-size: 4vw;
+  letter-spacing: 0;
+  line-height: normal;
+  width: 80%;
+  height: 5vw;
+  top: 42vw;
+  left: 6vw;
+  /* box-shadow: 0px 22px 75px #00000040; */
+}
+
+.sign-text
+
+.acct{
+  font-family: "Montserrat-Regular", Helvetica;
+  font-weight: 700;
+  color: #000000;
+  font-size: 1vw;
+  letter-spacing: 0;
+  line-height: normal;
+  top: 50vw;
+  left: 20vw;
+}
+
+.acct-1{
+  font-family: "Montserrat-Bold", Helvetica;
+  font-weight: 700;
+  color: rgb(51, 85, 136);
+  font-size: 1vw;
+  text-decoration: none;
+  letter-spacing: 0;
+  line-height: normal;
+  top: 50vw;
+  right: 24vw;
+}
+
+
+
+.pass-text{
+font-size: 1.2vw;
+}
+
+footer{
+  background-color: rgb(51, 85, 136);
+    position: relative;
+    top: 33vh;
+
+  
+  }
+
+
+.copyright-text {
+  top: 50vw;
+  right: 24vw;
+  font-family: "Montserrat", Helvetica;
+  font-weight: 400;
+  color: rgb(136, 86, 51);
+  font-size: 2vw;
+}
+
+/* .sign-in{
+  width: 75vw;
+  height: 85vw;
+  box-shadow: 7px 37px 55px #00000040, 0px -54px 200px #00000040;
+  left: 10vw;
+  top: 20vw;
+  overflow: hidden;
+}
+
+
+.text{
+  top: 10vw;
+  left: 6vw;
+  background: linear-gradient(180deg, rgb(136, 86, 51) 13.5%, rgb(154, 144, 135) 100%);
+  -webkit-background-clip: text !important;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-fill-color: transparent;
+  font-family: "Montserrat-Bold", Helvetica;
+  font-weight: 700;
+  color: transparent;
+  font-size: 4vw;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.vector{
+  width: 15%; 
+  height: auto; 
+  right: 18vw; 
+  top: -14vw;
+  
+}
+
+.text-wrapper-8 {
+  background: linear-gradient(180deg, rgb(136, 86, 51) 13.5%, rgb(154, 144, 135) 100%);
+  -webkit-background-clip: text !important;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-fill-color: transparent;
+  font-family: "Montserrat-Bold", Helvetica;
+  font-weight: 700;
+  color: transparent;
+  font-size: 4vw;
+  letter-spacing: 0;
+  line-height: normal;
+  top: 18vw;
+  left: 6vw;
+}
+
+.p {
+  font-family: "Montserrat-Regular", Helvetica;
+  color: #885633;
+  font-size: 2vw;
+  letter-spacing: 0;
+  line-height: normal;
+  top: 23vw;
+  left: 6vw;
+}
+
+.email{
+  top: 28vw;
+  left: 6vw;
+}
+
+.email-in{
+  top: 32vw;
+  left: 6vw;
+  width: 80%;
+  height: 5%;
+}
+
+.pass{
+  top: 38vw;
+  left: 6vw;
+}
+
+.pass-in{
+  top: 42vw;
+  left: 6vw;
+  width: 80%;
+  height: 5%;
+}
+
+.text-wrapper-7{
+  font-family: "Montserrat-Regular", Helvetica;
+  font-weight: 400;
+  color: #00000061;
+  font-size: 1.3vw;
+  letter-spacing: 0;
+  line-height: normal;
+  top: 40vw;
+  text-decoration: none;
+  right: 9vw;
+}
+
+.form-check-label{
+  font-family: "Montserrat-Regular", Helvetica;
+  font-weight: 400;
+  color: #00000061;
+  font-size: 1.3vw;
+  letter-spacing: 0;
+  line-height: normal;
+  top: 47vw;
+  left: 8vw;
+}
+
+.form-check-input{
+  top: 46.8vw;
+  left: 8vw;
+  
+
+}
+
+.sign-btn{
+  background: linear-gradient(180deg, rgb(136, 86, 51) 13.5%, rgb(154, 144, 135) 100%);
+  font-family: "Montserrat-Bold", Helvetica;
+  font-weight: 700;
+  color: #ffffff;
+  font-size: 4vw;
+  letter-spacing: 0;
+  line-height: normal;
+  width: 80%;
+  top: 53vw;
+  left: 6vw;
+  box-shadow: 0px 22px 75px #00000040;
+}
+
+.acct{
+  font-family: "Montserrat-Regular", Helvetica;
+  font-weight: 400;
+  color: #000000;
+  font-size: 2vw;
+  letter-spacing: 0;
+  line-height: normal;
+  top: 63vw;
+  left: 15vw;
+}
+
+.acct-1{
+  font-family: "Montserrat-Bold", Helvetica;
+  font-weight: 700;
+  color: #885633;
+  font-size: 2vw;
+  letter-spacing: 0;
+  line-height: normal;
+  top: 63vw;
+  right: 20vw;
+}
+
+.text-wrapper-17{
+  font-family: "Montserrat-Regular", Helvetica;
+  font-weight: 400;
+  color: #00000061;
+  font-size: 2vw;
+  letter-spacing: 0;
+  line-height: normal;
+  top: 69vw;
+  left: 35vw;
+}
+
+.email-text{
+  font-size: 1.2vw;
+}
+.pass-text{
+font-size: 1.2vw;
+} */

@@ -1,0 +1,394 @@
+
+.logo {
+  background-size: cover;       
+  background-repeat: no-repeat; 
+  background-position: center;  
+  height: auto;          
+  width:9rem ;               
+}
+
+.sign-in{
+  width: 40vw;
+  height: 65vw;
+  left: 45vw;
+  top: -10vw;
+  overflow: hidden;
+}
+
+.login {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  overflow: hidden;
+  
+}
+
+.nav-body {
+  flex-grow: 1;
+  background-color: #D3D3D3;
+  width: 35vw;
+  height: 65vw;
+}
+
+.text{
+  top: 5vw;
+  left: 6vw;
+  background: linear-gradient(180deg, rgb(51, 85, 136) 13.5%, rgb(206, 208, 214) 100%);
+  -webkit-background-clip: text !important;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-fill-color: transparent;
+  font-family: "Montserrat-Bold", Helvetica;
+  font-weight: 700;
+  color: transparent;
+  font-size: 4vw;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+
+
+.text-wrapper-8 {
+  background: linear-gradient(180deg, rgb(51, 85, 136) 13.5%, rgb(206, 208, 214) 100%);
+  -webkit-background-clip: text !important;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-fill-color: transparent;
+  font-family: "Montserrat-Bold", Helvetica;
+  font-weight: 600;
+  color: transparent;
+  font-size: 2vw;
+  letter-spacing: 0;
+  line-height: normal;
+  top: 13vw;
+  left: 6vw;
+}
+
+.email-text{
+  font-size: 1.2vw;
+  
+}
+
+.email{
+  top: 17vw;
+  left: 6vw;
+}
+
+.email-in{
+  top: 23vw;
+  left: 6vw;
+  width: 80%;
+  max-width: 80%;
+  height: 5%;
+}
+
+.pass{
+  top: 27vw;
+  left: 6vw;
+}
+
+.pass-in{
+  top: 33vw;
+  left: 6vw;
+  width: 80%;
+  max-width: 80%;
+  height: 5%;
+
+}
+
+.text-wrapper-7{
+  font-family: "Montserrat-Regular", Helvetica;
+  font-weight: 400;
+  color: #00000061;
+  font-size: 1.3vw;
+  letter-spacing: 0;
+  line-height: normal;
+  top: 30vw;
+  text-decoration: none;
+  right: 2vw;
+}
+
+
+
+.sign-btn{
+  background: linear-gradient(180deg, rgb(51, 85, 136) 93.5%, rgb(206, 208, 214) 97%);
+  font-family: "Montserrat-Bold", Helvetica;
+  font-weight: 700;
+  font-size: 1.5rem;
+  letter-spacing: 0;
+  line-height: normal;
+  width: 80%;
+  height: 3rem;
+  top: 42vw;
+  left: 6vw;
+  /* box-shadow: 0px 22px 75px #00000040; */
+}
+
+
+.acct{
+  font-family: "Montserrat-Regular", Helvetica;
+  font-weight: 700;
+  color: #000000;
+  font-size: 1.5vw;
+  letter-spacing: 0;
+  line-height: normal;
+  top: 52vw;
+  left: 6vw;
+}
+
+.acct-1{
+  font-family: "Montserrat-Bold", Helvetica;
+  font-weight: 700;
+  color: rgb(51, 85, 136);
+  font-size: 1.5vw;
+  text-decoration: none;
+  letter-spacing: 0;
+  line-height: normal;
+  top: 52vw;
+  right: 3vw;
+}
+
+
+
+.pass-text{
+font-size: 1.2vw;
+}
+.footer-body {
+  background-color: #343a40; /* Example background color */
+  text-align: center;
+  padding: 1rem 0;
+  margin-top: auto; /* Pushes the footer to the bottom */
+}
+
+
+
+.side{
+  background-color: #D3D3D3;
+}
+.footers{
+  top: 99vh;
+  right: 0vw;
+  background-color: #343a40;
+}
+
+.signuptext{
+  top: 5vw;
+  left: 6vw;
+  background: linear-gradient(180deg, rgb(51, 85, 136) 13.5%, rgb(206, 208, 214) 100%);
+  -webkit-background-clip: text !important;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-fill-color: transparent;
+  font-family: "Montserrat-Bold", Helvetica;
+  font-weight: 700;
+  color: transparent;
+  font-size: 3vw;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.nav{
+  background-color: #D3D3D3;
+}
+
+.logo{
+  width: 10vw;
+  height: 7vw;
+}
+
+nav {
+  background-color: #D3D3D3;
+  
+}
+
+
+.navbar-brand img {
+  max-width: 10vw;
+  min-width: 5vw;
+}
+
+.navv{
+  color: white;
+}
+
+.nav-text-current {
+  font-family: "Montserrat", Helvetica;
+  font-weight: 700;
+  color: #ffffff;
+  font-size: 1.5vw;
+}
+
+.nav-text {
+  font-family: "Montserrat", Helvetica;
+  font-weight: 700;
+  color: #ffffff;
+  font-size: 2.5vw;
+
+}
+
+.nav-link.nav-text {
+  font-family: "Montserrat", Helvetica;
+  font-weight: 400;
+  color: #3d5583 !important;
+  font-size: 1.7vw;
+}
+
+.navbar-nav .nav-link.nav-text:hover {
+  color: rgb(143, 174, 240) !important;
+}
+
+.logout{
+  background-color: #03172c !important;
+}
+
+.logout:hover {
+  color: rgb(143, 174, 240) !important;
+}
+
+.nav-link.nav-text-2{
+  color: white;
+  font-size: 1.2vw;
+}
+
+.nav-link.nav-text-2:hover{
+  color: rgb(143, 174, 240) !important;
+}
+
+.admin-body{
+  background-color: #03172c;
+}
+
+.inventory{
+  width: 35vw;
+  height: 10vw;
+  background-color:rgb(143, 174, 240) ;
+  overflow: hidden;
+}
+
+.inventory-logo{
+  width: 5vw;
+  height: 3vw;
+}
+
+.admin-text{
+  font-size: 2vw;
+  font-weight: 600;
+  color: #03172c ;
+  left: 16vw;
+  top:3vw;
+}
+
+.admin-footer {
+  background-color: #343a40; /* Example background color */
+  text-align: center;
+  padding: 1rem 0;
+  margin-top: auto; /* Pushes the footer to the bottom */
+}
+
+.admin-logo{
+  left: 5vw;
+  top:2vw;
+}
+.setting-body{
+  background-color: #03172c;
+}
+.setting{
+  width: 30vw;
+  height: 38vw;
+  background-color:rgb(143, 174, 240) ;
+  overflow: hidden;
+  left: 36vw;
+  top: 10vw;
+}
+
+.user-logo{
+  width: 3vw;
+  height: 3vw;
+}
+
+.profile-logo{
+  left: 3vw;
+  top:4vw;
+}
+
+.user-text{
+  font-size: 2vw;
+  font-weight: 600;
+  color: #03172c ;
+  left: 8vw;
+  top:4vw;
+}
+
+.security-text{
+  font-size: 2vw;
+  font-weight: 600;
+  color: #03172c ;
+  left: 8vw;
+  top:8vw;
+}
+
+.notify-text{
+  font-size: 2vw;
+  font-weight: 600;
+  color: #03172c ;
+  left: 8vw;
+  top:12vw;
+}
+
+.help-text{
+  font-size: 2vw;
+  font-weight: 600;
+  color: #03172c ;
+  left: 8vw;
+  top:16vw;
+}
+
+.acc-text{
+  font-size: 2vw;
+  font-weight: 600;
+  color: #03172c ;
+  left: 8vw;
+  top:20vw;
+}
+
+.logout-text{
+  font-size: 2vw;
+  font-weight: 600;
+  color: #03172c ;
+  left: 8vw;
+  top:24vw;
+}
+
+.logout-text:hover{
+  color: rgb(12, 64, 175) !important;
+}
+
+.security-logo{
+  left: 3vw;
+  top:8vw;
+}
+
+.notify-logo{
+  left: 3vw;
+  top:12vw;
+}
+
+.help-logo{
+  left: 3vw;
+  top:16vw;
+}
+
+.acc-logo{
+  left: 3vw;
+  top:20vw;
+}
+
+.logout-logo{
+  left: 3vw;
+  top:24vw;
+}
+
+.setting-text{
+  font-size: 3vw;
+  font-weight: 600;
+}

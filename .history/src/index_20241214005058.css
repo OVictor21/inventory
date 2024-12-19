@@ -1,0 +1,43 @@
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+.navbar{
+  background-color: silver;
+}
+
+.navbar-brand img {
+  max-width: 10vw;
+  min-width: 5vw;
+}
+
+.nav-text-current {
+  font-family: "Montserrat", Helvetica;
+  font-weight: 700;
+  color: #ffffff;
+  font-size: 1.5vw;
+}
+
+.nav-text {
+  font-family: "Montserrat", Helvetica;
+  font-weight: 400;
+  color: #ffffff;
+  font-size: 1.5vw;
+}
+
+.nav-text-2 {
+  font-family: "Montserrat", Helvetica;
+  font-weight: 800;
+  color: rgb(136, 86, 51);
+  font-size: 1.5vw;
+}
