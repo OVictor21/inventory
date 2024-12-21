@@ -36,7 +36,7 @@ function App() {
         <Route path='/Orderpage' element={<Orderpage/>}/>
         <Route path='/Addremove' element={<Addremove />}/>
         <Route path='/Adduser' element={<Adduser/>}/>
-        <Route path='/Security' element={<Security />}/>
+        <Route path='/Security' element={<Security />>}/>
         
       </Routes>
     </Router>

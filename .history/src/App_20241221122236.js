@@ -13,7 +13,6 @@ import Order from './pages/order';
 import Orderpage from './pages/orderpage';
 import Addremove from './pages/addremove';
 import Adduser from './pages/adduser';
-import Security from './pages/security';
 
 
 
@@ -36,7 +35,7 @@ function App() {
         <Route path='/Orderpage' element={<Orderpage/>}/>
         <Route path='/Addremove' element={<Addremove />}/>
         <Route path='/Adduser' element={<Adduser/>}/>
-        <Route path='/Security' element={<Security />}/>
+        <Route path='/Security' 
         
       </Routes>
     </Router>

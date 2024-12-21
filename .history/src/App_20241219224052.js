@@ -4,7 +4,6 @@ import Login from "./components/login";
 import Signup from './components/signup';
 import Reset1 from './components/reset1';
 import Reset2 from './components/reset2';
-import Admin from './pages/Admin';
 import Editprofile from './pages/editprofile';
 import Inventory from './pages/inventory';
 import Monitor from './pages/monitor';
@@ -13,7 +12,6 @@ import Order from './pages/order';
 import Orderpage from './pages/orderpage';
 import Addremove from './pages/addremove';
 import Adduser from './pages/adduser';
-import Security from './pages/security';
 
 
 
@@ -36,7 +34,6 @@ function App() {
         <Route path='/Orderpage' element={<Orderpage/>}/>
         <Route path='/Addremove' element={<Addremove />}/>
         <Route path='/Adduser' element={<Adduser/>}/>
-        <Route path='/Security' element={<Security />}/>
         
       </Routes>
     </Router>

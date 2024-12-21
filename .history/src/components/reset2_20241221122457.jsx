@@ -12,7 +12,7 @@ const   Reset2 = () => {
           </a>
         </div>
   
-    
+        {/* Main Content Area with Sign-Up Form */}
         <div className="flex-grow-1 d-flex flex-column justify-content-center align-items-center p-4">
           <div className="card shadow p-3" style={{ maxWidth: '500px', width: '100%' }}>
             <h3 className="text-center mb-4 signuptext">Reset Password</h3>
@@ -42,6 +42,7 @@ const   Reset2 = () => {
             </form>
           </div>
   
+          {/* Footer */}
           <footer className="mt-auto text-center py-3 w-100 position-absolute footers text-white ">
             <p className="mb-0">&copy;2024 BestworthJvp. All rights reserved.</p>
            
