@@ -1,6 +1,21 @@
 const Login = () => {
+
+const raw = "{\r\n    \"username\": \"admin\",\r\n    \"password\": \"admin\"\r\n}";
+
+const requestOptions = {
+  method: 'POST',
+  body: raw,
+  redirect: 'follow'
+};
+
+fetch("https://sims-mup1.onrender.com/auth/login/", requestOptions)
+  .then(response => response.text())
+  .then(result => console.log(result))
+  .catch(error => console.log('error', error));
+
+
   return (
-    <div className="d-flex">
+    <div className="d-flex admin-body">
       {/* Sidebar with Logo */}
       <div
         className="side text-white d-flex flex-column align-items-center p-3 vh-100"
@@ -28,9 +43,9 @@ const Login = () => {
                 Email Address
               </label>
               <input
-                type="email"
+                type="text"
                 className="form-control"
-                id="email"
+                id="text"
                 required
               />
             </div>
@@ -51,7 +66,9 @@ const Login = () => {
                 id="password"
                 required
               />
-            </div>
+            </div
+            >
+            {/* Login button  */}
             <div className="d-grid">
               <button type="submit" className="btn btn-primary">
                 Login

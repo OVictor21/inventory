@@ -16,13 +16,6 @@ const Order = () => {
 
         <div className="inventory justify-content-center rounded-5 mb-4">
           <div className="inventory-logo position-relative">
-            <img className="d-block w-100 position-absolute admin-logo" src="/order-history.png" alt="Logo" />
-            <a href="/Orderhistory " className="admin-text  position-absolute text-decoration-none text-nowrap">Order History</a>
-          </div>
-        </div>
-
-        <div className="inventory justify-content-center rounded-5 mb-4">
-          <div className="inventory-logo position-relative">
             <img className="d-block w-100 position-absolute admin-logo" src="/history.png" alt="Logo" />
             <a href="/Transaction" className="admin-text  position-absolute text-decoration-none text-nowrap">Transaction History</a>
           </div>

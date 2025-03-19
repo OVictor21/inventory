@@ -17,6 +17,10 @@ const Navbar = () => {
             <li class="nav-item m-2 ">
                 <a className="nav-link nav-text" href="/Admin">Home</a>
             </li>
+
+            <li className="nav-item m-2">
+                <a className="nav-link nav-text" href="/Products">Products</a>
+            </li>
            
             <li className="nav-item m-2">
                 <a className="nav-link nav-text" href="/Inventory">Inventory</a>
@@ -37,6 +41,7 @@ const Navbar = () => {
     <li><a class="dropdown-item" href="/Editprofile">Edit Profile</a></li>
     <li><a class="dropdown-item" href="/Security">Security</a></li>
     <li><a class="dropdown-item" href="/Adduser">Add an Account</a></li>
+    <li><a class="dropdown-item" href="/Removeuser">Remove user Account</a></li>
   </ul>
 </div>
             </li>

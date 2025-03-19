@@ -1,22 +1,23 @@
 import Navbar from "../components/navbar";
-import React from 'react';
 import { useState } from "react";
 
-const Addproduct = () => {
-  const [selectedOption, setSelectedOption] = useState("");
-  return (
-    <div className="d-flex flex-column min-vh-100">
+const Editproduct = () => {
+   
+    const [selectedOption, setSelectedOption] = useState("");
+
+    return (
+      <div className="d-flex flex-column min-vh-100">
       <Navbar />
 
       <div className="flex-grow-1 d-flex flex-column justify-content-center align-items-center p-4 admin-body">
         <div className="card shadow p-3" style={{ maxWidth: '500px', width: '100%' }}>
-          <h3 className="text-center mb-4 signuptext">Add Product</h3>
+          <h3 className="text-center mb-4 signuptext">Edit Product</h3>
           <form>
             <div className="mb-3">
               <label htmlFor="name" className="form-label fw-bold">
                  Model Number
               </label>
-              <input type="text" className="form-control" id="name" required />
+              <input type="text" className="form-control" id="name" required/>
             </div>
 
             <div className="mb-3">
@@ -51,12 +52,6 @@ const Addproduct = () => {
  <input type="Quantity" className="form-control" id="Quantity" required />
 </div>
 
-            <div className="d-grid">
-              <button type="submit" className="btn btn-primary">
-                Edit
-              </button>
-            </div>
-
             <div className="d-grid mt-3">
               <button type="submit" className="btn btn-primary">
                 Save
@@ -70,7 +65,7 @@ const Addproduct = () => {
         <p className="mb-0">&copy;2024 BestworthJvp. All rights reserved.</p>
       </footer>
     </div>
-  );
-};
-
-export default Addproduct;
+    )
+}
+ 
+export default Editproduct;

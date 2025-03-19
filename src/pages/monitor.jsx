@@ -9,7 +9,7 @@ const Monitor = () => {
         <div className="inventory justify-content-center rounded-5 mb-4">
           <div className="inventory-logo position-relative ">
             <img className="d-block w-100 position-absolute admin-logo" src="/plus.png" alt="Logo" />
-            <a href="/viewInventory " className="admin-text  position-absolute text-decoration-none text-nowrap">View Inventory</a>
+            <a href="/Inventoryproducts " className="admin-text  position-absolute text-decoration-none text-nowrap">View Inventory</a>
           </div>
         </div>
         
@@ -24,7 +24,7 @@ const Monitor = () => {
         <div className="inventory justify-content-center rounded-5 mb-4">
           <div className="inventory-logo position-relative">
             <img className="d-block w-100 position-absolute admin-logo" src="/plus.png" alt="Logo" />
-            <a href="/Edititem " className="admin-text  position-absolute text-decoration-none text-nowrap">Edit Items</a>
+            <a href="/Edititems " className="admin-text  position-absolute text-decoration-none text-nowrap">Edit Items</a>
           </div>
         </div>
 

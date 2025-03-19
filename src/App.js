@@ -10,10 +10,23 @@ import Inventory from './pages/inventory';
 import Monitor from './pages/monitor';
 import Addproduct from './pages/addproduct';
 import Order from './pages/order';
-import Orderpage from './pages/orderpage';
 import Addremove from './pages/addremove';
 import Adduser from './pages/adduser';
 import Security from './pages/security';
+import Purchase from './pages/purchase';
+import Removeuser from './pages/removeuser';
+import Inventoryproducts from './pages/inventoryproduct';
+import Products from './pages/product';
+import Productlist from './pages/productlist';
+import Editproduct from './pages/editproduct';
+import Edititems from './pages/edititems';
+import Transaction from './pages/transaction';
+import Placeorder from './pages/placeorder';
+
+
+
+
+
 
 
 
@@ -33,10 +46,23 @@ function App() {
         <Route path='/Monitor' element={<Monitor/>} />
         <Route path='/Addproduct' element={<Addproduct />}/>
         <Route path='/Order' element={<Order/>}/>
-        <Route path='/Orderpage' element={<Orderpage/>}/>
         <Route path='/Addremove' element={<Addremove />}/>
         <Route path='/Adduser' element={<Adduser/>}/>
         <Route path='/Security' element={<Security />}/>
+        <Route path='/Purchase'element={<Purchase/>}/>
+        <Route path='/Removeuser' element={<Removeuser/>}/>
+        <Route path='/Inventoryproducts' element={<Inventoryproducts/>}/>
+        <Route path='/Products' element={<Products/>}/>
+        <Route path='/Productlist' element={<Productlist/>}/>
+        <Route path='/EditProduct' element={<Editproduct/>}/>
+        <Route path='/Edititems' element={<Edititems/>}/>
+        <Route path='/Addproduct' element={<Addproduct/>}/>
+        <Route path='/Transaction' element={<Transaction/>}/>
+        <Route path='/Placeorder' element={<Placeorder/>}/>
+       
+        
+
+      
         
       </Routes>
     </Router>
