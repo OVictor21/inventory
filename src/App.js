@@ -1,5 +1,5 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import { BrowserRouter as Router, Route, Routes, Navigate } from "react-router-dom";
 import Login from "./components/login";
 import Signup from './components/signup';
 import Reset1 from './components/reset1';
@@ -23,49 +23,42 @@ import Edititems from './pages/edititems';
 import Transaction from './pages/transaction';
 import Placeorder from './pages/placeorder';
 
-
-
-
-
-
-
-
-
 function App() {
   return (
     <div className="App">
       <Router>
-      <Routes>
-      <Route path="/" element={<Admin />} />   
-        <Route path="/Login" element={<Login />} />
-        <Route path="/Signup" element={<Signup/>} />
-        <Route path='/Reset1' element={<Reset1/>} />
-        <Route path='/Reset2' element={<Reset2 />} />
-        <Route path='/Editprofile' element={<Editprofile/>}/>
-        <Route path='/Inventory' element={<Inventory/>} />
-        <Route path='/Monitor' element={<Monitor/>} />
-        <Route path='/Addproduct' element={<Addproduct />}/>
-        <Route path='/Order' element={<Order/>}/>
-        <Route path='/Addremove' element={<Addremove />}/>
-        <Route path='/Adduser' element={<Adduser/>}/>
-        <Route path='/Security' element={<Security />}/>
-        <Route path='/Purchase'element={<Purchase/>}/>
-        <Route path='/Removeuser' element={<Removeuser/>}/>
-        <Route path='/Inventoryproducts' element={<Inventoryproducts/>}/>
-        <Route path='/Products' element={<Products/>}/>
-        <Route path='/Productlist' element={<Productlist/>}/>
-        <Route path='/EditProduct' element={<Editproduct/>}/>
-        <Route path='/Edititems' element={<Edititems/>}/>
-        <Route path='/Addproduct' element={<Addproduct/>}/>
-        <Route path='/Transaction' element={<Transaction/>}/>
-        <Route path='/Placeorder' element={<Placeorder/>}/>
-       
-        
+        <Routes>
+          {/* ✅ Redirect root `/` to `/login` by default */}
+          <Route path="/" element={<Navigate to="/login" replace />} />
 
-      
-        
-      </Routes>
-    </Router>
+          {/* Define all routes */}
+          <Route path="/login" element={<Login />} />
+          <Route path="/signup" element={<Signup />} />
+          <Route path='/reset1' element={<Reset1 />} />
+          <Route path='/reset2' element={<Reset2 />} />
+          <Route path='/admin' element={<Admin />} />
+          <Route path='/editprofile' element={<Editprofile />} />
+          <Route path='/inventory' element={<Inventory />} />
+          <Route path='/monitor' element={<Monitor />} />
+          <Route path='/addproduct' element={<Addproduct />} />
+          <Route path='/order' element={<Order />} />
+          <Route path='/addremove' element={<Addremove />} />
+          <Route path='/adduser' element={<Adduser />} />
+          <Route path='/security' element={<Security />} />
+          <Route path='/purchase' element={<Purchase />} />
+          <Route path='/removeuser' element={<Removeuser />} />
+          <Route path='/inventoryproducts' element={<Inventoryproducts />} />
+          <Route path='/products' element={<Products />} />
+          <Route path='/productlist' element={<Productlist />} />
+          <Route path='/editproduct' element={<Editproduct />} />
+          <Route path='/edititems' element={<Edititems />} />
+          <Route path='/transaction' element={<Transaction />} />
+          <Route path='/placeorder' element={<Placeorder />} />
+
+          {/* ✅ Catch all unknown paths and redirect to `/login` */}
+          <Route path="*" element={<Navigate to="/login" replace />} />
+        </Routes>
+      </Router>
     </div>
   );
 }
