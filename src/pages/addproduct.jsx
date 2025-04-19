@@ -1,7 +1,10 @@
-import Navbar from "../components/navbar";
 import React, { useState } from 'react';
+import Navbar from "../components/navbar";
+import axiosInstance from "../utils/axiosInstance";
+import { useAuth } from "../context/AuthContext";
 
 const Addproduct = () => {
+  const { logout } = useAuth();
   const [selectedOption, setSelectedOption] = useState("");
   const [formData, setFormData] = useState({
     modelNumber: "",
@@ -22,32 +25,25 @@ const Addproduct = () => {
 
     const payload = {
       name: formData.productName,
-      description: "Auto description", 
+      description: "Auto description",
       alertQty: 2,
       stockQty: parseInt(formData.quantity),
       buyingPrice: parseInt(formData.price),
-      sellingPrice: parseInt(formData.price) + 20000, 
+      sellingPrice: parseInt(formData.price) + 20000,
       slug: formData.productName.toLowerCase().replace(/\s+/g, "-"),
       sku: formData.modelNumber,
       supplier_name: "LG",
       supplier_contact: "+229448888",
-      categoryId: "5ddb046a-95e1-4b8d-aaf3-2f5eac1aebdb", 
+      categoryId: selectedOption || "5ddb046a-95e1-4b8d-aaf3-2f5eac1aebdb",
     };
 
     try {
-      const response = await fetch("https://sims-mup1.onrender.com/products", {
-        method: 'POST',
-        headers: {
-          "Content-Type": "application/json"
-        },
-        body: JSON.stringify(payload),
-      });
-
-      const result = await response.json();
-      console.log("Product added:", result);
+      const response = await axiosInstance.post("/products", payload);
+      console.log("Product added:", response.data);
       alert("Product added successfully!");
     } catch (error) {
       console.error("Error adding product:", error);
+      if (error.response?.status === 401) logout();
       alert("Failed to add product.");
     }
   };
@@ -91,7 +87,6 @@ const Addproduct = () => {
           </form>
         </div>
       </div>
-
       <footer className="text-center py-3 w-100 footers text-white">
         <p className="mb-0">&copy;2024 BestworthJvp. All rights reserved.</p>
       </footer>

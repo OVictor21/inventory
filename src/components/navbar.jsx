@@ -1,13 +1,14 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { useAuth } from "../context/AuthContext";
 import "bootstrap/dist/js/bootstrap.bundle.min";
 
 const Navbar = () => {
   const navigate = useNavigate();
+  const { logout, isLoggedIn } = useAuth();
   const [user, setUser] = useState(null);
 
   useEffect(() => {
-    // Load user data from localStorage on component mount
     const storedUser = localStorage.getItem("user");
     if (storedUser) {
       setUser(JSON.parse(storedUser));
@@ -15,9 +16,10 @@ const Navbar = () => {
   }, []);
 
   const handleLogout = () => {
-    localStorage.removeItem("user"); // Clear user session
+    localStorage.removeItem("user");
+    logout();
     alert("You have been logged out.");
-    navigate("/login"); // Redirect to login page
+    navigate("/login");
   };
 
   return (
@@ -95,7 +97,7 @@ const Navbar = () => {
           </li>
         </ul>
         <ul className="navbar-nav ms-auto justify-content-end mx-5">
-          {user ? (
+          {isLoggedIn ? (
             <li className="nav-item logout p-2 rounded-2 text-nowrap">
               <button className="btn btn-danger" onClick={handleLogout}>
                 Log out

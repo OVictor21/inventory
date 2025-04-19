@@ -1,12 +1,18 @@
 import { useState } from "react";
+import { useNavigate, useLocation } from "react-router-dom";
+import { useAuth } from "../context/AuthContext";
+import axiosInstance from "../utils/axiosInstance";
 
 const Login = () => {
-  const [formData, setFormData] = useState({
-    username: "",
-    password: "",
-  });
+  const navigate = useNavigate();
+  const location = useLocation();
+  const { login } = useAuth();
+
+  const [formData, setFormData] = useState({ username: "", password: "" });
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
+
+  const from = location.state?.from?.pathname;
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -18,38 +24,32 @@ const Login = () => {
     setError("");
 
     try {
-      const response = await fetch(
-        "https://sims-mup1.onrender.com/auth/login/",
-        {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(formData),
-          credentials: "include",
-        }
-      );
+      const response = await axiosInstance.post("/auth/login/", formData);
+      const result = response.data;
 
-      const result = await response.json();
+      login(result.data.token);
+      localStorage.setItem("user", JSON.stringify(result.data));
 
-      if (response.ok) {
-        console.log("Login successful:", result.data);
-        alert(`Welcome, ${result.data.username}!`);
+      alert(`Welcome, ${result.data.username}!`);
 
-        localStorage.setItem("user", JSON.stringify(result.data));
-
-        if (result.data.role === "ADMIN") {
-          window.location.href = "/admin";
-        } else {
-          window.location.href = "/home";
-        }
+      if (from) {
+        navigate(from, { replace: true });
+      } else if (result.data.role === "ADMIN") {
+        navigate("/admin", { replace: true });
       } else {
-        setError(result.error || "Invalid username or password.");
+        navigate("/home", { replace: true });
       }
     } catch (error) {
-      setError("Network error. Please try again.");
+      if (error.response) {
+        setError(error.response.data.error || "Invalid username or password.");
+      } else {
+        setError("Network error. Please try again.");
+      }
     } finally {
       setLoading(false);
     }
   };
+  
 
   return (
     <div className="d-flex admin-body">
@@ -120,7 +120,7 @@ const Login = () => {
 
             <div className="text-center mt-3">
               <p>
-                Don't have an account?{" "}
+                Don't have an account? {" "}
                 <a href="/Signup" className="text-decoration-none">
                   Sign up
                 </a>

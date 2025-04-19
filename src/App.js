@@ -1,5 +1,6 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { BrowserRouter as Router, Route, Routes, Navigate } from "react-router-dom";
+import PrivateRoute from './routes/PrivateRoute'; // ✅ import the PrivateRoute you created
 import Login from "./components/login";
 import Signup from './components/signup';
 import Reset1 from './components/reset1';
@@ -28,34 +29,36 @@ function App() {
     <div className="App">
       <Router>
         <Routes>
-          {/* ✅ Redirect root `/` to `/login` by default */}
+          {/* ✅ Public routes */}
           <Route path="/" element={<Navigate to="/login" replace />} />
-
-          {/* Define all routes */}
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<Signup />} />
           <Route path='/reset1' element={<Reset1 />} />
           <Route path='/reset2' element={<Reset2 />} />
-          <Route path='/admin' element={<Admin />} />
-          <Route path='/editprofile' element={<Editprofile />} />
-          <Route path='/inventory' element={<Inventory />} />
-          <Route path='/monitor' element={<Monitor />} />
-          <Route path='/addproduct' element={<Addproduct />} />
-          <Route path='/order' element={<Order />} />
-          <Route path='/addremove' element={<Addremove />} />
-          <Route path='/adduser' element={<Adduser />} />
-          <Route path='/security' element={<Security />} />
-          <Route path='/purchase' element={<Purchase />} />
-          <Route path='/removeuser' element={<Removeuser />} />
-          <Route path='/inventoryproducts' element={<Inventoryproducts />} />
-          <Route path='/products' element={<Products />} />
-          <Route path='/productlist' element={<Productlist />} />
-          <Route path='/editproduct' element={<Editproduct />} />
-          <Route path='/edititems' element={<Edititems />} />
-          <Route path='/transaction' element={<Transaction />} />
-          <Route path='/placeorder' element={<Placeorder />} />
 
-          {/* ✅ Catch all unknown paths and redirect to `/login` */}
+          {/* ✅ Protected routes inside PrivateRoute */}
+          <Route element={<PrivateRoute />}>
+            <Route path='/admin' element={<Admin />} />
+            <Route path='/editprofile' element={<Editprofile />} />
+            <Route path='/inventory' element={<Inventory />} />
+            <Route path='/monitor' element={<Monitor />} />
+            <Route path='/addproduct' element={<Addproduct />} />
+            <Route path='/order' element={<Order />} />
+            <Route path='/addremove' element={<Addremove />} />
+            <Route path='/adduser' element={<Adduser />} />
+            <Route path='/security' element={<Security />} />
+            <Route path='/purchase' element={<Purchase />} />
+            <Route path='/removeuser' element={<Removeuser />} />
+            <Route path='/inventoryproducts' element={<Inventoryproducts />} />
+            <Route path='/products' element={<Products />} />
+            <Route path='/productlist' element={<Productlist />} />
+            <Route path='/editproduct' element={<Editproduct />} />
+            <Route path='/edititems' element={<Edititems />} />
+            <Route path='/transaction' element={<Transaction />} />
+            <Route path='/placeorder' element={<Placeorder />} />
+          </Route>
+
+          {/* ✅ Catch all unknown paths */}
           <Route path="*" element={<Navigate to="/login" replace />} />
         </Routes>
       </Router>
