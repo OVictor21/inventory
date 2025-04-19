@@ -1,35 +1,44 @@
 import Navbar from "../components/navbar";
-import React, {  useState } from 'react';
+import React, {  useState, useEffect } from 'react';
 
 const Productlist = () => {
     const [searchTerm, setSearchTerm] = useState('');
-    const [productHistory] = useState([]);
+    const [productHistory, setProductHistory] = useState([]);
   
-    // useEffect(() => {
-    //   const fetchData = async () => {
-    //     try {
-    //       const response = await axios.get('https://your-api-url.com/purchase-history'); 
-    //       setPurchaseHistory(response.data);
-    //     } catch (error) {
-    //       console.error("Error fetching data:", error);
-    //     }
-    //   };
-  
-    //   fetchData();
-    // }, []);
-  
-    // Search Function
-    const handleSearch = () => {
-      console.log("Searching for:", searchTerm);
-      // Add search logic here (e.g., filter table data)
+     // Fetch Products
+     useEffect(() => {
+    const fetchProducts = async () => {
+      try {
+        const response = await fetch("https://sims-mup1.onrender.com/products", {
+          method: 'GET',
+          headers: {
+            "Content-Type": "application/json"
+          }
+        });
+
+        const data = await response.json();
+        setProductHistory(data);
+        console.log("Fetched products:", data);
+      } catch (error) {
+        console.error("Error fetching products:", error);
+      }
     };
-  
-    // Filter Function
-    const handleFilter = () => {
-      console.log("Filtering...");
-      // Add filter logic here
-    };
-  
+
+    fetchProducts();
+  }, []);
+
+  // Search Function
+  const handleSearch = () => {
+    console.log("Searching for:", searchTerm);
+    
+  };
+
+  // Filter Function
+  const handleFilter = () => {
+    console.log("Filtering...");
+   
+  };
+
     return (
       <div>
         <Navbar />

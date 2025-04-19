@@ -18,16 +18,20 @@ const Login = () => {
     setError("");
 
     try {
-      const response = await fetch("https://sims-mup1.onrender.com/auth/login/", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(formData),
-      });
+      const response = await fetch(
+        "https://sims-mup1.onrender.com/auth/login/",
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(formData),
+          credentials: "include",
+        }
+      );
 
       const result = await response.json();
 
       if (response.ok) {
-        console.log("Login successful:", result);
+        console.log("Login successful:", result.data);
         alert(`Welcome, ${result.data.username}!`);
 
         localStorage.setItem("user", JSON.stringify(result.data));
@@ -49,58 +53,77 @@ const Login = () => {
 
   return (
     <div className="d-flex admin-body">
-      <div className="side text-white d-flex flex-column align-items-center p-3 vh-100" style={{ width: "200px" }}>
+      <div
+        className="side text-white d-flex flex-column align-items-center p-3 vh-100"
+        style={{ width: "200px" }}
+      >
         <a href="/" className="d-block mb-4">
           <img src="./logo.png" alt="Logo" className="img-fluid" />
         </a>
       </div>
 
       <div className="flex-grow-1 d-flex flex-column justify-content-center align-items-center p-4">
-        <div className="card shadow p-3" style={{ maxWidth: "500px", width: "100%" }}>
+        <div
+          className="card shadow p-3"
+          style={{ maxWidth: "500px", width: "100%" }}
+        >
           <h3 className="text-center mb-4 signuptext">Login</h3>
 
           {error && <p className="text-danger text-center">{error}</p>}
 
           <form onSubmit={handleLogin}>
             <div className="mb-3">
-              <label htmlFor="username" className="form-label">Username</label>
-              <input 
-                type="text" 
-                className="form-control" 
-                id="username" 
+              <label htmlFor="username" className="form-label">
+                Username
+              </label>
+              <input
+                type="text"
+                className="form-control"
+                id="username"
                 name="username"
                 value={formData.username}
                 onChange={handleChange}
-                required 
+                required
               />
             </div>
 
             <div className="mb-3">
-              <label htmlFor="password" className="form-label">Password</label>
-              <input 
-                type="password" 
-                className="form-control" 
-                id="password" 
+              <label htmlFor="password" className="form-label">
+                Password
+              </label>
+              <input
+                type="password"
+                className="form-control"
+                id="password"
                 name="password"
                 value={formData.password}
                 onChange={handleChange}
-                required 
+                required
               />
             </div>
 
             <div className="my-3 text-end text-red-500">
-              <a href="/Reset1" className="text-decoration-none text-dark">Forgot Password?</a>
+              <a href="/Reset1" className="text-decoration-none text-dark">
+                Forgot Password?
+              </a>
             </div>
 
             <div className="d-grid">
-              <button type="submit" className="btn btn-primary" disabled={loading}>
+              <button
+                type="submit"
+                className="btn btn-primary"
+                disabled={loading}
+              >
                 {loading ? "Logging in..." : "Login"}
               </button>
             </div>
 
             <div className="text-center mt-3">
               <p>
-                Don't have an account? <a href="/Signup" className="text-decoration-none">Sign up</a>
+                Don't have an account?{" "}
+                <a href="/Signup" className="text-decoration-none">
+                  Sign up
+                </a>
               </p>
             </div>
           </form>

@@ -5,7 +5,7 @@ const   Reset1 = () => {
         <div className="side text-white d-flex flex-column align-items-center p-3 vh-100" style={{ width: '300px' }}>
           <a href="/" className="d-block mb-4">
             <img
-              src="./logo.png" // Replace with your actual logo URL
+              src="./logo.png" 
               alt="Logo"
               className="img-fluid"
             />

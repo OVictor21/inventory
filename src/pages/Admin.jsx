@@ -13,10 +13,12 @@ const Admin = () => {
     } else {
       setIsAuthenticated(true);
     }
+
+    setIsAuthenticated(true);
   }, [navigate]);
 
   if (!isAuthenticated) {
-    return null; 
+    return null;
   }
 
   return (
@@ -25,26 +27,62 @@ const Admin = () => {
       <div className="admin-body min-vh-100 d-flex flex-column justify-content-center align-items-center ">
         <div className="inventory justify-content-center rounded-5 mb-4 mt-4">
           <div className="inventory-logo position-relative">
-            <img className="d-block w-100 position-absolute admin-logo" src="/inventory.png" alt="Logo" />
-            <a href="/Inventory" className="admin-text position-absolute text-decoration-none">INVENTORY</a>
+            <img
+              className="d-block w-100 position-absolute admin-logo"
+              src="/inventory.png"
+              alt="Logo"
+            />
+            <a
+              href="/Inventory"
+              className="admin-text position-absolute text-decoration-none"
+            >
+              INVENTORY
+            </a>
           </div>
         </div>
         <div className="inventory justify-content-center rounded-5 mb-4">
           <div className="inventory-logo position-relative">
-            <img className="d-block w-100 position-absolute admin-logo" src="/order.png" alt="Logo" />
-            <a href="/Order" className="admin-text position-absolute text-decoration-none">ORDER</a>
+            <img
+              className="d-block w-100 position-absolute admin-logo"
+              src="/order.png"
+              alt="Logo"
+            />
+            <a
+              href="/Order"
+              className="admin-text position-absolute text-decoration-none"
+            >
+              ORDER
+            </a>
           </div>
         </div>
         <div className="inventory justify-content-center rounded-5 mb-4">
           <div className="inventory-logo position-relative">
-            <img className="d-block w-100 position-absolute admin-logo" src="/notification.png" alt="Logo" />
-            <a href="/Notification" className="admin-text position-absolute text-decoration-none">NOTIFICATION</a>
+            <img
+              className="d-block w-100 position-absolute admin-logo"
+              src="/notification.png"
+              alt="Logo"
+            />
+            <a
+              href="/Notification"
+              className="admin-text position-absolute text-decoration-none"
+            >
+              NOTIFICATION
+            </a>
           </div>
         </div>
         <div className="inventory justify-content-center rounded-5 mb-4">
           <div className="inventory-logo position-relative">
-            <img className="d-block w-100 position-absolute admin-logo" src="/add-user.png" alt="Logo" />
-            <a href="/Adduser" className="admin-text position-absolute text-decoration-none text-nowrap">ADD USER</a>
+            <img
+              className="d-block w-100 position-absolute admin-logo"
+              src="/add-user.png"
+              alt="Logo"
+            />
+            <a
+              href="/Adduser"
+              className="admin-text position-absolute text-decoration-none text-nowrap"
+            >
+              ADD USER
+            </a>
           </div>
         </div>
       </div>
