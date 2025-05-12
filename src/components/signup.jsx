@@ -48,8 +48,8 @@ const Signup = () => {
             </div>
 
             <div className="text-center mt-3 ">
-    <p>Already have an account?{' '}<a href="/login" className="text-decoration-none">Sign In</a></p>
-  </div>
+              <p>Already have an account?{' '}<a href="/login" className="text-decoration-none">Sign In</a></p>
+            </div>
 
           </form>
         </div>
@@ -57,7 +57,7 @@ const Signup = () => {
         {/* Footer */}
         <footer className="mt-auto text-center py-3 w-100 position-absolute footers text-white ">
           <p className="mb-0">&copy;2024 BestworthJvp. All rights reserved.</p>
-         
+
         </footer>
       </div>
     </div>

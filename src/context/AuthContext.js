@@ -1,32 +1,56 @@
-// AuthContext.js
-import React, { createContext, useContext, useState, useEffect } from "react";
+import { createContext, useContext, useState, useEffect } from "react";
 
 const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
-  const [token, setToken] = useState(null);
-  const [authReady, setAuthReady] = useState(false);
+  const [authState, setAuthState] = useState({
+    user: null,
+    isReady: false,
+  });
 
   useEffect(() => {
-    const storedToken = sessionStorage.getItem("token");
-    if (storedToken) setToken(storedToken);
-    setAuthReady(true);
+    const storedUser = sessionStorage.getItem("user");
+    if (storedUser) {
+      setAuthState({
+        user: JSON.parse(storedUser),
+        isReady: true,
+      });
+    } else {
+      setAuthState({
+        user: null,
+        isReady: true,
+      });
+    }
   }, []);
 
-  const login = (newToken) => {
-    sessionStorage.setItem("token", newToken);
-    setToken(newToken);
+
+
+  const login = (_tokenIgnored, userData) => {
+    sessionStorage.setItem("user", JSON.stringify(userData));
+    setAuthState({
+      user: userData,
+      isReady: true,
+    });
   };
 
   const logout = () => {
-    sessionStorage.removeItem("token");
-    setToken(null);
+    sessionStorage.removeItem("user");
+    setAuthState({
+      user: null,
+      isReady: true,
+    });
   };
 
-  const isLoggedIn = !!token;
-
   return (
-    <AuthContext.Provider value={{ token, login, logout, isLoggedIn, authReady }}>
+    <AuthContext.Provider
+      value={{
+        user: authState.user,
+        isLoggedIn: !!authState.user,
+        isReady: authState.isReady,
+        login,
+        logout,
+      }}
+    >
       {children}
     </AuthContext.Provider>
   );

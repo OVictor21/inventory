@@ -4,18 +4,17 @@ import { useAuth } from "../context/AuthContext";
 import axiosInstance from "../utils/axiosInstance";
 
 const Login = () => {
+  const { login } = useAuth();
   const navigate = useNavigate();
   const location = useLocation();
-  const { login } = useAuth();
 
   const [formData, setFormData] = useState({ username: "", password: "" });
-  const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
-
-  const from = location.state?.from?.pathname;
+  const [error, setError] = useState("");
 
   const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
+    const { name, value } = e.target;
+    setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
   const handleLogin = async (e) => {
@@ -24,32 +23,30 @@ const Login = () => {
     setError("");
 
     try {
-      const response = await axiosInstance.post("/auth/login/", formData);
-      const result = response.data;
+      const response = await axiosInstance.post("/auth/login", formData, {
+        withCredentials: true,
+      });
 
-      login(result.data.token);
-      localStorage.setItem("user", JSON.stringify(result.data));
+      const { username, role } = response.data.data;
 
-      alert(`Welcome, ${result.data.username}!`);
+      login("COOKIE", { username, role });
 
-      if (from) {
-        navigate(from, { replace: true });
-      } else if (result.data.role === "ADMIN") {
-        navigate("/admin", { replace: true });
-      } else {
-        navigate("/home", { replace: true });
-      }
-    } catch (error) {
-      if (error.response) {
-        setError(error.response.data.error || "Invalid username or password.");
-      } else {
-        setError("Network error. Please try again.");
-      }
+      const from = location.state?.from?.pathname || "/";  
+
+      const redirectPath =
+        role === "ADMIN"
+          ? "/admin"  
+          : from && from !== "/products"  
+          ? from
+          : "/admin";  
+      navigate(redirectPath, { replace: true }); 
+
+    } catch (err) {
+      setError("Login failed.");
     } finally {
       setLoading(false);
     }
   };
-  
 
   return (
     <div className="d-flex admin-body">

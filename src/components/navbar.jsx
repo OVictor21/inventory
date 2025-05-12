@@ -1,105 +1,76 @@
-import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
 import "bootstrap/dist/js/bootstrap.bundle.min";
 
 const Navbar = () => {
   const navigate = useNavigate();
   const { logout, isLoggedIn } = useAuth();
-  const [user, setUser] = useState(null);
-
-  useEffect(() => {
-    const storedUser = localStorage.getItem("user");
-    if (storedUser) {
-      setUser(JSON.parse(storedUser));
-    }
-  }, []);
 
   const handleLogout = () => {
-    localStorage.removeItem("user");
     logout();
-    alert("You have been logged out.");
     navigate("/login");
   };
 
   return (
     <nav className="navbar navbar-expand-md justify-content-center p-3 z-1">
+      {/* Logo/Brand */}
       <a className="navbar-brand d-flex me-auto" href="/">
-        <img className="block w-100" src="/logo.png" alt="Logo" />
+        <img className="w-100" src="/logo.png" alt="Company Logo" width="100" />
       </a>
+
+      {/* Mobile Toggle Button */}
       <button
         className="navbar-toggler ms-auto"
         type="button"
         data-bs-toggle="collapse"
-        data-bs-target="#collapseNavbar"
+        data-bs-target="#navbarContent"
+        aria-controls="navbarContent"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
       >
         <span className="navbar-toggler-icon"></span>
       </button>
-      <div className="navbar-collapse collapse" id="collapseNavbar">
+
+      {/* Navbar Content */}
+      <div className="navbar-collapse collapse" id="navbarContent">
+        {/* Main Navigation */}
         <ul className="navbar-nav justify-content-center w-100">
+          <NavItem href="/Admin" text="Home" />
+          <NavItem href="/Products" text="Products" />
+          <NavItem href="/Inventory" text="Inventory" />
+          <NavItem href="/Order" text="Order" />
+          <NavItem href="/Notifications" text="Notifications" />
+          
+          {/* Settings Dropdown */}
           <li className="nav-item m-2">
-            <a className="nav-link nav-text" href="/Admin">
-              Home
-            </a>
-          </li>
-          <li className="nav-item m-2">
-            <a className="nav-link nav-text" href="/Products">
-              Products
-            </a>
-          </li>
-          <li className="nav-item m-2">
-            <a className="nav-link nav-text" href="/Inventory">
-              Inventory
-            </a>
-          </li>
-          <li className="nav-item m-2">
-            <a className="nav-link nav-text" href="/Order">
-              Order
-            </a>
-          </li>
-          <li className="nav-item m-2">
-            <a className="nav-link nav-text" href="/Notifications">
-              Notifications
-            </a>
-          </li>
-          <li>
-            <div className="dropdown m-2">
+            <div className="dropdown">
               <button
-                type="button"
                 className="btn dropdown-toggle nav-link nav-text"
+                type="button"
                 data-bs-toggle="dropdown"
+                aria-expanded="false"
               >
                 Settings
               </button>
               <ul className="dropdown-menu drop bg-body-secondary">
-                <li>
-                  <a className="dropdown-item" href="/Editprofile">
-                    Edit Profile
-                  </a>
-                </li>
-                <li>
-                  <a className="dropdown-item" href="/Security">
-                    Security
-                  </a>
-                </li>
-                <li>
-                  <a className="dropdown-item" href="/Adduser">
-                    Add an Account
-                  </a>
-                </li>
-                <li>
-                  <a className="dropdown-item" href="/Removeuser">
-                    Remove user Account
-                  </a>
-                </li>
+                <DropdownItem href="/Editprofile" text="Edit Profile" />
+                <DropdownItem href="/Security" text="Security" />
+                <DropdownItem href="/Adduser" text="Add an Account" />
+                <DropdownItem href="/Removeuser" text="Remove user Account" />
               </ul>
             </div>
           </li>
         </ul>
+
+        {/* Login/Logout Button */}
         <ul className="navbar-nav ms-auto justify-content-end mx-5">
           {isLoggedIn ? (
             <li className="nav-item logout p-2 rounded-2 text-nowrap">
-              <button className="btn btn-danger" onClick={handleLogout}>
+              <button 
+                className="btn btn-danger" 
+                onClick={handleLogout}
+                aria-label="Logout"
+              >
                 Log out
               </button>
             </li>
@@ -115,5 +86,13 @@ const Navbar = () => {
     </nav>
   );
 };
+
+
+const NavItem = ({ href, text }) => (
+
+  <li className="nav-item m-2"> <Link className="nav-link nav-text" to={href}> {text} </Link> </li> );
+  const DropdownItem = ({ href, text }) => (
+  
+  <li> <Link className="dropdown-item" to={href}> {text} </Link> </li> );
 
 export default Navbar;

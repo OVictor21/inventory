@@ -1,6 +1,7 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { BrowserRouter as Router, Route, Routes, Navigate } from "react-router-dom";
 import PrivateRoute from './routes/PrivateRoute'; // ✅ import the PrivateRoute you created
+import { useAuth } from "./context/AuthContext";
 import Login from "./components/login";
 import Signup from './components/signup';
 import Reset1 from './components/reset1';
@@ -25,6 +26,12 @@ import Transaction from './pages/transaction';
 import Placeorder from './pages/placeorder';
 
 function App() {
+  const { isReady } = useAuth();
+
+  if (!isReady) {
+    return <div className="d-flex justify-content-center mt-5">Loading...</div>;
+  }
+
   return (
     <div className="App">
       <Router>
@@ -36,8 +43,7 @@ function App() {
           <Route path='/reset1' element={<Reset1 />} />
           <Route path='/reset2' element={<Reset2 />} />
 
-          {/* ✅ Protected routes inside PrivateRoute */}
-          <Route element={<PrivateRoute />}>
+          <Route element={<PrivateRoute requiredRole="ADMIN" />}>
             <Route path='/admin' element={<Admin />} />
             <Route path='/editprofile' element={<Editprofile />} />
             <Route path='/inventory' element={<Inventory />} />
