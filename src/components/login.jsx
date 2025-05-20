@@ -31,15 +31,19 @@ const Login = () => {
 
       login("COOKIE", { username, role });
 
-      const from = location.state?.from?.pathname || "/";  
+      const from = location.state?.from?.pathname || "/";
 
       const redirectPath =
         role === "ADMIN"
-          ? "/admin"  
-          : from && from !== "/products"  
-          ? from
-          : "/admin";  
-      navigate(redirectPath, { replace: true }); 
+          ? "/admin"
+          : role === "SALESPERSON"
+            ? "/salesdashbord"
+            : from && from !== "/products"
+              ? from
+              : "/admin";
+
+      navigate(redirectPath, { replace: true });
+
 
     } catch (err) {
       setError("Login failed.");

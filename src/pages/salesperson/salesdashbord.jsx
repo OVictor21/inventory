@@ -16,7 +16,7 @@ const Salesdashbord = () => {
           alt="Logo"
         />
         <Link
-          to="/Order"
+          to="/salesorder"
           className="admin-text position-absolute text-decoration-none"
         >
           ORDER

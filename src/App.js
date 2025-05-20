@@ -51,7 +51,6 @@ function App() {
           <Route path="/signup" element={<Signup />} />
           <Route path='/reset1' element={<Reset1 />} />
           <Route path='/reset2' element={<Reset2 />} />
-
           <Route element={<PrivateRoute requiredRole="ADMIN" />}>
             <Route path='/admin' element={<Admin />} />
             <Route path='/editprofile' element={<Editprofile />} />
@@ -72,6 +71,8 @@ function App() {
             <Route path='/transaction' element={<Transaction />} />
             <Route path='/placeorder' element={<Placeorder />} />
             <Route path='/addcategory' element={<Addcategory/>} />
+          </Route>
+          <Route element={<PrivateRoute requiredRole="SALESPERSON" />}>
             <Route path='/salesdashbord' element={<Salesdashbord/>} />
             <Route path='/salesorder' element={<Salesorder/>} />
             <Route path='/salestransaction' element={<Salestransaction/>} />

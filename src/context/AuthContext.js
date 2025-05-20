@@ -23,8 +23,6 @@ export const AuthProvider = ({ children }) => {
     }
   }, []);
 
-
-
   const login = (_tokenIgnored, userData) => {
     sessionStorage.setItem("user", JSON.stringify(userData));
     setAuthState({
