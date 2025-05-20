@@ -24,6 +24,15 @@ import Editproduct from './pages/editproduct';
 import Edititems from './pages/edititems';
 import Transaction from './pages/transaction';
 import Placeorder from './pages/placeorder';
+import Addcategory from './pages/addcategory';
+import Salesdashbord from './pages/salesperson/salesdashbord';
+import Salesorder from './pages/salesperson/salesorder';
+import Salestransaction from './pages/salesperson/salestransaction';
+import Salesplaceorder from './pages/salesperson/salesplaceorder';
+import Saleseditprofile from './pages/salesperson/saleseditprofile';
+import Salessecurity from './pages/salesperson/salessecurity';
+import Salesproducts from './pages/salesperson/salesproduct';
+
 
 function App() {
   const { isReady } = useAuth();
@@ -62,6 +71,14 @@ function App() {
             <Route path='/edititems' element={<Edititems />} />
             <Route path='/transaction' element={<Transaction />} />
             <Route path='/placeorder' element={<Placeorder />} />
+            <Route path='/addcategory' element={<Addcategory/>} />
+            <Route path='/salesdashbord' element={<Salesdashbord/>} />
+            <Route path='/salesorder' element={<Salesorder/>} />
+            <Route path='/salestransaction' element={<Salestransaction/>} />
+            <Route path='/salesplaceorder' element={<Salesplaceorder/>} />
+            <Route path='/saleseditprofile' element={<Saleseditprofile/>} />
+            <Route path='/salessecurity' element={<Salessecurity/>} />
+            <Route path='/salesproduct' element={<Salesproducts/>} />
           </Route>
 
           {/* ✅ Catch all unknown paths */}
