@@ -1,7 +1,5 @@
 import Navbar from "../components/navbar";
 
-
-
 const Removeuser = () => {
     const name = "Okafor Victor"
     const date = "2/20/2025"

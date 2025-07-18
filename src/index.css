@@ -1,4 +1,3 @@
-
 .logo {
   background-size: cover;       
   background-repeat: no-repeat; 
@@ -191,9 +190,27 @@ font-size: 1.2vw;
   background-color: #D3D3D3;
 }
 
-.logo{
-  width: 10vw;
-  height: 7vw;
+.logo {
+  width: auto;        
+  height: 50px;        
+  max-height: 8vw;     
+}
+
+@media (max-width: 768px) {
+  .logo {
+    height: 50px;      
+  }
+}
+
+@media (max-width: 480px) {
+  .logo {
+    height: 25px;      
+  }
+}
+
+.best{
+    font-family: 'Poppins', sans-serif;
+      font-weight: 400;
 }
 
 nav {
@@ -652,3 +669,188 @@ nav {
 .cash-text{
   float: left;
 }
+
+.sidebar {
+  background-color: #f8f9fa;
+  height: 100vh;
+  border-right: 1px solid #dee2e6;
+}
+
+.logo-img {
+  width: 40px;
+}
+
+.logo-text {
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+.side{
+  background-color: #f8f9fa;
+}
+
+.accordion-button {
+  background-color: #f8f9fa !important; /* Match sidebar background */
+  color: #187bdd !important;           /* Text color (same as sidebar) */
+  box-shadow: none !important;         /* Remove default focus shadow */
+  padding: 0.5rem 1rem;                /* Match other sidebar links */
+}
+
+.accordion-button::after {
+  color: #495057 !important; /* Change the dropdown arrow color */
+}
+
+.accordion-button:hover {
+  background-color: #e7f1ff !important; /* slightly darker background */
+  color: #0d6efd !important;
+}
+
+
+.sidebar-link {
+  color: #495057;
+  padding: 10px 15px;
+  border-radius: 8px;
+  transition: background 0.2s, color 0.2s;
+}
+
+.sidebar-link.active,
+.sidebar-link:hover {
+  background-color: #e7f1ff;
+  color: #0d6efd;
+}
+
+.sidebar-header{
+  color: #0d6efd;
+  margin-left: 1vw;
+}
+
+.icon{
+  margin-right: 1vw;
+}
+/* Top Navbar */
+.top-navbar {
+  border-bottom: 1px solid #dee2e6;
+}
+
+.search-input {
+  border-radius: 50px;
+  padding: 0.5rem 1rem;
+}
+
+/* Tabs */
+.custom-tabs .nav-link {
+  border-radius: 50px;
+  margin-right: 5px;
+  background-color: #f1f3f5;
+  color: #495057;
+}
+
+.custom-tabs .nav-link.active {
+  background-color: #0d6efd;
+  color: #fff;
+}
+
+/* Cards */
+.card {
+  border: none;
+}
+
+.change-picture-btn {
+  border-radius: 50px;
+}
+
+/* Buttons */
+.btn-primary {
+  background-color: #0d6efd;
+  border: none;
+}
+
+.btn-primary:hover {
+  background-color: #0b5ed7;
+}
+
+.btn-outline-secondary {
+  border-radius: 50px;
+}
+
+.rounded-pill {
+  border-radius: 50px !important;
+}
+
+/* Styling for the top navbar icons */
+.icon-hover {
+  color: #6c757d; /* muted grey */
+  cursor: pointer;
+  transition: color 0.2s ease-in-out;
+}
+
+.icon-hover:hover {
+  color: #0d6efd; /* Bootstrap primary blue on hover */
+}
+
+.badge {
+  width: 8px;
+  height: 8px;
+  border: 2px solid #fff; /* white border around badge */
+}
+
+.logo-img {
+  width: 35px;
+  height: 35px;
+}
+
+.logo-text {
+  font-weight: 700;
+  font-size: 1.2rem;
+}
+
+.bar{
+  margin-left: 17vw;
+}
+
+.das{
+  text-decoration: none;
+  color: #e40b0b;
+}
+
+.das1{
+  text-decoration: none;
+   color: #0d6efd;
+}
+
+.das,.das1:hover{
+  color: #66696b;
+}
+
+.account {
+  border: 2px solid rgb(226, 225, 225);
+  background-color: #fff; /* white background */
+  padding: 0.5rem;
+  height: 8vh;
+  border-radius: 0.5rem;
+}
+
+.acc,
+.sec {
+  text-decoration: none;
+  color: #000000 !important;
+  width: 48%;
+  background-color: hsl(0, 0%, 100%)!important;
+  padding: 0.5rem 1rem;
+  text-align: center;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  border: none !important;
+}
+
+.acc.active,
+.sec.active {
+  background-color: #e7f3ff !important; /* active background (light blue) */
+  color: #0d6efd !important;            /* optional: active text color */
+}
+
+.acc:hover,
+.sec:hover {
+  background-color: #e7f3ff !important; /* light blue hover */
+  color: #0d6efd !important; /* optional: change text color on hover */
+}
+

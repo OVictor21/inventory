@@ -1,140 +1,101 @@
-import { useState } from "react";
-import { useNavigate, useLocation } from "react-router-dom";
-import { useAuth } from "../context/AuthContext";
-import axiosInstance from "../utils/axiosInstance";
+import React, { useEffect } from "react";
+import { Container, Row, Col, Form, Button, InputGroup } from "react-bootstrap";
 
 const Login = () => {
-  const { login } = useAuth();
-  const navigate = useNavigate();
-  const location = useLocation();
+  useEffect(() => {
+    const raw = JSON.stringify({
+      username: "admin",
+      password: "admin",
+    });
 
-  const [formData, setFormData] = useState({ username: "", password: "" });
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState("");
+    const requestOptions = {
+      method: "POST",
+      body: raw,
+      headers: {
+        "Content-Type": "application/json",
+      },
+      redirect: "follow",
+    };
 
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData((prev) => ({ ...prev, [name]: value }));
-  };
-
-  const handleLogin = async (e) => {
-    e.preventDefault();
-    setLoading(true);
-    setError("");
-
-    try {
-      const response = await axiosInstance.post("/auth/login", formData, {
-        withCredentials: true,
-      });
-
-      const { username, role } = response.data.data;
-
-      login("COOKIE", { username, role });
-
-      const from = location.state?.from?.pathname || "/";
-
-      const redirectPath =
-        role === "ADMIN"
-          ? "/admin"
-          : role === "SALESPERSON"
-            ? "/salesdashbord"
-            : from && from !== "/products"
-              ? from
-              : "/admin";
-
-      navigate(redirectPath, { replace: true });
-
-
-    } catch (err) {
-      setError("Login failed.");
-    } finally {
-      setLoading(false);
-    }
-  };
+    fetch("https://sims-mup1.onrender.com/auth/login/", requestOptions)
+      .then((response) => response.text())
+      .then((result) => console.log(result))
+      .catch((error) => console.log("error", error));
+  }, []);
 
   return (
-    <div className="d-flex admin-body">
-      <div
-        className="side text-white d-flex flex-column align-items-center p-3 vh-100"
-        style={{ width: "200px" }}
-      >
-        <a href="/" className="d-block mb-4">
-          <img src="./logo.png" alt="Logo" className="img-fluid" />
-        </a>
-      </div>
+    <Container fluid className="bg-white min-vh-100 d-flex align-items-center justify-content-center mt-3 mt-md-0">
+      <Row className="w-100">
+        <Col xs={12} md={6} lg={4} className="mx-auto">
+          {/* Logo + Text */}
+          <div className="position-absolute top-0 start-0 p-3 d-flex align-items-center">
+            <img
+              src="./logo.png"
+              alt="Logo"
+              className="me-1 logo"
+            />
+            <h1 className="fw-bold">Bestworth</h1>
+          </div>
 
-      <div className="flex-grow-1 d-flex flex-column justify-content-center align-items-center p-4">
-        <div
-          className="card shadow p-3"
-          style={{ maxWidth: "500px", width: "100%" }}
-        >
-          <h3 className="text-center mb-4 signuptext">Login</h3>
+          <div className="p-4 shadow rounded bg-white">
+            <h3 className="fw-bold mb-4">Sign In</h3>
 
-          {error && <p className="text-danger text-center">{error}</p>}
-
-          <form onSubmit={handleLogin}>
-            <div className="mb-3">
-              <label htmlFor="username" className="form-label">
-                Username
-              </label>
-              <input
-                type="text"
-                className="form-control"
-                id="username"
-                name="username"
-                value={formData.username}
-                onChange={handleChange}
-                required
+            <Button variant="outline-primary" className="w-100 mb-3 d-flex align-items-center justify-content-center">
+              <img
+                src="https://www.svgrepo.com/show/475656/google-color.svg"
+                alt="Google"
+                width="20"
+                height="20"
+                className="me-2"
               />
+              Sign in with Google
+            </Button>
+
+            <div className="d-flex align-items-center my-3">
+              <div className="flex-grow-1 border-top"></div>
+              <span className="mx-2 text-muted">Or</span>
+              <div className="flex-grow-1 border-top"></div>
             </div>
 
-            <div className="mb-3">
-              <label htmlFor="password" className="form-label">
-                Password
-              </label>
-              <input
-                type="password"
-                className="form-control"
-                id="password"
-                name="password"
-                value={formData.password}
-                onChange={handleChange}
-                required
-              />
-            </div>
+            <Form>
+              <Form.Group className="mb-3" controlId="formBasicEmail">
+                <Form.Label>Email</Form.Label>
+                <InputGroup>
+                  <Form.Control type="email" placeholder="Enter email" />
+                  <InputGroup.Text></InputGroup.Text>
+                </InputGroup>
+              </Form.Group>
 
-            <div className="my-3 text-end text-red-500">
-              <a href="/Reset1" className="text-decoration-none text-dark">
-                Forgot Password?
-              </a>
-            </div>
+              <Form.Group className="mb-3" controlId="formBasicPassword">
+                <Form.Label>Password</Form.Label>
+                <InputGroup>
+                  <Form.Control type="password" placeholder="Input password" />
+                  <InputGroup.Text></InputGroup.Text>
+                </InputGroup>
+              </Form.Group>
 
-            <div className="d-grid">
-              <button
-                type="submit"
-                className="btn btn-primary"
-                disabled={loading}
-              >
-                {loading ? "Logging in..." : "Login"}
-              </button>
-            </div>
-
-            <div className="text-center mt-3">
-              <p>
-                Don't have an account? {" "}
-                <a href="/Signup" className="text-decoration-none">
-                  Sign up
+              <div className="d-flex justify-content-between align-items-center mb-3">
+                <Form.Check type="checkbox" label="Remember me ?" />
+                <a href="#" className="text-decoration-none">
+                  Forget Password
                 </a>
-              </p>
-            </div>
-          </form>
-        </div>
+              </div>
 
-        <footer className="mt-auto text-center py-3 w-100 position-absolute footers text-white">
-          <p className="mb-0">&copy;2024 BestworthJvp. All rights reserved.</p>
-        </footer>
-      </div>
-    </div>
+              <Button variant="primary" type="submit" className="w-100">
+                Sign In
+              </Button>
+            </Form>
+
+            <p className="mt-3 text-center text-muted">
+              Do not have account?{" "}
+              <a href="#" className="text-decoration-none">
+                Sign Up
+              </a>
+            </p>
+          </div>
+        </Col>
+      </Row>
+    </Container>
   );
 };
 

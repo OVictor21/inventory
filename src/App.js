@@ -1,7 +1,5 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { BrowserRouter as Router, Route, Routes, Navigate } from "react-router-dom";
-import PrivateRoute from './routes/PrivateRoute'; // ✅ import the PrivateRoute you created
-import { useAuth } from "./context/AuthContext";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Login from "./components/login";
 import Signup from './components/signup';
 import Reset1 from './components/reset1';
@@ -24,69 +22,41 @@ import Editproduct from './pages/editproduct';
 import Edititems from './pages/edititems';
 import Transaction from './pages/transaction';
 import Placeorder from './pages/placeorder';
-import Addcategory from './pages/addcategory';
-import Salesdashbord from './pages/salesperson/salesdashbord';
-import Salesorder from './pages/salesperson/salesorder';
-import Salestransaction from './pages/salesperson/salestransaction';
-import Salesplaceorder from './pages/salesperson/salesplaceorder';
-import Saleseditprofile from './pages/salesperson/saleseditprofile';
-import Salessecurity from './pages/salesperson/salessecurity';
-import Salesproducts from './pages/salesperson/salesproduct';
-
+import Dashboard from './pages/dashboard';
+import AccountSettings from './pages/accountsettings';
 
 function App() {
-  const { isReady } = useAuth();
-
-  if (!isReady) {
-    return <div className="d-flex justify-content-center mt-5">Loading...</div>;
-  }
-
   return (
-    <div className="App">
-      <Router>
+    <Router>
+      <div className="App">
         <Routes>
-          {/* ✅ Public routes */}
-          <Route path="/" element={<Navigate to="/login" replace />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/signup" element={<Signup />} />
-          <Route path='/reset1' element={<Reset1 />} />
-          <Route path='/reset2' element={<Reset2 />} />
-          <Route element={<PrivateRoute requiredRole="ADMIN" />}>
-            <Route path='/admin' element={<Admin />} />
-            <Route path='/editprofile' element={<Editprofile />} />
-            <Route path='/inventory' element={<Inventory />} />
-            <Route path='/monitor' element={<Monitor />} />
-            <Route path='/addproduct' element={<Addproduct />} />
-            <Route path='/order' element={<Order />} />
-            <Route path='/addremove' element={<Addremove />} />
-            <Route path='/adduser' element={<Adduser />} />
-            <Route path='/security' element={<Security />} />
-            <Route path='/purchase' element={<Purchase />} />
-            <Route path='/removeuser' element={<Removeuser />} />
-            <Route path='/inventoryproducts' element={<Inventoryproducts />} />
-            <Route path='/products' element={<Products />} />
-            <Route path='/productlist' element={<Productlist />} />
-            <Route path='/editproduct' element={<Editproduct />} />
-            <Route path='/edititems' element={<Edititems />} />
-            <Route path='/transaction' element={<Transaction />} />
-            <Route path='/placeorder' element={<Placeorder />} />
-            <Route path='/addcategory' element={<Addcategory/>} />
-          </Route>
-          <Route element={<PrivateRoute requiredRole="SALESPERSON" />}>
-            <Route path='/salesdashbord' element={<Salesdashbord/>} />
-            <Route path='/salesorder' element={<Salesorder/>} />
-            <Route path='/salestransaction' element={<Salestransaction/>} />
-            <Route path='/salesplaceorder' element={<Salesplaceorder/>} />
-            <Route path='/saleseditprofile' element={<Saleseditprofile/>} />
-            <Route path='/salessecurity' element={<Salessecurity/>} />
-            <Route path='/salesproduct' element={<Salesproducts/>} />
-          </Route>
-
-          {/* ✅ Catch all unknown paths */}
-          <Route path="*" element={<Navigate to="/login" replace />} />
+          <Route path="/" element={<Admin />} />
+          <Route path="/Login" element={<Login />} />
+          <Route path="/Signup" element={<Signup />} />
+          <Route path="/Reset1" element={<Reset1 />} />
+          <Route path="/Reset2" element={<Reset2 />} />
+          <Route path="/Editprofile" element={<Editprofile />} />
+          <Route path="/Inventory" element={<Inventory />} />
+          <Route path="/Monitor" element={<Monitor />} />
+          <Route path="/Addproduct" element={<Addproduct />} />
+          <Route path="/Order" element={<Order />} />
+          <Route path="/Addremove" element={<Addremove />} />
+          <Route path="/Adduser" element={<Adduser />} />
+          <Route path="/Security" element={<Security />} />
+          <Route path="/Purchase" element={<Purchase />} />
+          <Route path="/Removeuser" element={<Removeuser />} />
+          <Route path="/Inventoryproducts" element={<Inventoryproducts />} />
+          <Route path="/Products" element={<Products />} />
+          <Route path="/Productlist" element={<Productlist />} />
+          <Route path="/EditProduct" element={<Editproduct />} />
+          <Route path="/Edititems" element={<Edititems />} />
+          <Route path="/Transaction" element={<Transaction />} />
+          <Route path="/Placeorder" element={<Placeorder />} />
+          <Route path="/Dashboard" element={<Dashboard />} />
+          <Route path="/AccountSettings" element={<AccountSettings />} />
         </Routes>
-      </Router>
-    </div>
+      </div>
+    </Router>
   );
 }
 
