@@ -1,225 +1,320 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import {
-  Container,
-  Row,
-  Col,
   Navbar,
   Nav,
   Form,
-  FormControl,
-  Button,
-  Card,
-  Table,
-  ListGroup,
-  Dropdown
+  Accordion,
 } from "react-bootstrap";
 
+
+
+
+
 const Dashboard = () => {
+   const [dashboardData] = useState({
+    notifications: [
+      { id: 1, name: "Napoleon Mark", product: "sink", price: 3000 },
+      { id: 2, name: "Napoleon Mark", product: "sink", price: 3000 },
+    ],
+    stats: {
+      totalRevenue: 91000,
+      totalCustomer: 5000,
+      totalExpenditure: 12000,
+      totalProductSold: 50,
+    },
+    salesThisMonth: {
+      avgItemValue: 211411,
+      avgMonthValue: 339091,
+    },
+    loginRecords: [
+      { id: 1, name: "Napoleon Mark", timeIn: "1:00AM", timeOut: "3:00AM" },
+      { id: 2, name: "Napoleon Mark", timeIn: "1:00AM", timeOut: "3:00AM" },
+    ],
+    popularProducts: [
+      { id: 1, name: "Pipes", code: "021231", price: 20000, sales: 3000, status: "Success" },
+      { id: 2, name: "Screws", code: "021231", price: 20000, sales: 2311, status: "Success" },
+      { id: 3, name: "Nuts", code: "021231", price: 20000, sales: 2111, status: "Success" },
+      { id: 4, name: "Bolts", code: "021231", price: 20000, sales: 1661, status: "Success" },
+    ],
+  });
+
+  // Simulate data fetch
+  useEffect(() => {
+    console.log("Data loaded:", dashboardData);
+  }, []); 
+
+
+
   return (
-    <Container fluid className="p-0">
-      {/* Sidebar */}
-      <Row className="g-0">
-        <Col md={2} className="bg-light vh-100 p-3">
-          <div className="mb-4">
-            <img src="./logo.png" alt="Logo" width="50" className="me-2" />
-            <span className="fw-bold fs-5">richbon HO</span>
-          </div>
+    <div>
+      {/* Top Navbar */}
+      <Navbar
+        expand="lg"
+        className="top-navbar d-flex justify-content-between align-items-center px-4 py-2"
+        style={{
+          width: "100%",
+          position: "fixed",
+          top: 0,
+          left: 0,
+          zIndex: 1030,
+          backgroundColor: "#fff",
+        }}
+      >
+        <Form className="d-flex w-25 bar">
+          <Form.Control
+            type="search"
+            placeholder="Search product"
+            className="search-input"
+          />
+        </Form>
+        <Nav className="ms-auto d-flex align-items-center">
+          <Nav.Link>
+            <i className="bi bi-bell-fill fs-5"></i>
+          </Nav.Link>
+          <Nav.Link>
+            <i className="bi bi-envelope-fill fs-5"></i>
+          </Nav.Link>
+          <Nav.Link className="fw-bold">
+            Napoleon Mark <span className="text-muted">Admin</span>
+          </Nav.Link>
+        </Nav>
+      </Navbar>
 
-          <Nav className="flex-column">
-            <Nav.Link active>Dashboard</Nav.Link>
-            <Nav.Link>Product</Nav.Link>
-            <Nav.Link>Order</Nav.Link>
-            <Nav.Link>Users</Nav.Link>
-            <Nav.Link>Sales Report</Nav.Link>
-            <hr />
-            <Nav.Link>Account & Settings</Nav.Link>
-            <Nav.Link>Help</Nav.Link>
-            <Form.Check 
-              type="switch"
-              id="dark-mode-switch"
-              label="Dark Mode"
-              className="mt-3"
-            />
-          </Nav>
+      <div
+        style={{
+          display: "flex",
+          height: "auto",
+        }}
+      >
+        {/* Sidebar */}
+        <div
+          style={{
+            width: "250px",
+            backgroundColor: "#f8f9fa",
+            borderRight: "1px solid #dee2e6",
+            padding: "1rem",
+            paddingTop: "70px",
+            display: "flex",
+            flexDirection: "column",
+            height: "100vh",
+            position: "fixed",
+            top: 0,
+            left: 0,
+            zIndex: 1020,
+          }}
+        >
 
-          <div className="mt-auto">
-            <Dropdown>
-              <Dropdown.Toggle variant="light" className="w-100">
-                Napoleon <small className="text-muted">Admin</small>
-              </Dropdown.Toggle>
-              <Dropdown.Menu>
-                <Dropdown.Item>Profile</Dropdown.Item>
-                <Dropdown.Item>Logout</Dropdown.Item>
-              </Dropdown.Menu>
-            </Dropdown>
-          </div>
-        </Col>
+          <div className="logo mb-4">
+                      <img src="./logo.png" alt="Logo" className="logo-img" />
+                      <span className="logo-text fw-bold ms-2">Bestworth</span>
+                    </div>
+          
+                    <Nav className="flex-column side">
+                      <div className="sidebar-header">GENERAL</div>
+                      <Nav.Link className="sidebar-link">
+                        <span className="icon">
+                          <i className="fa-solid fa-house"></i>
+                        </span>
+                        Dashboard
+                      </Nav.Link>
+          
+                      {/* Product Dropdown */}
+                      <Accordion defaultActiveKey="0" flush>
+                        <Accordion.Item eventKey="0">
+                          <Accordion.Header className="side">
+                            <span className="icon">
+                              <i className="fa-solid fa-cart-shopping"></i>
+                            </span>
+                            Product
+                          </Accordion.Header>
+                          <Accordion.Body className="ps-4 side">
+                            <Nav.Link className="sidebar-link">Pasin and Pedestal</Nav.Link>
+                            <Nav.Link className="sidebar-link">WC</Nav.Link>
+                            <Nav.Link className="sidebar-link">Categories</Nav.Link>
+                          </Accordion.Body>
+                        </Accordion.Item>
+                      </Accordion>
+          
+                      <Nav.Link className="sidebar-link">
+                        <span className="icon"><i className="fa-solid fa-receipt"></i></span> Order
+                      </Nav.Link>
+                      <Nav.Link className="sidebar-link">
+                        <span className="icon"><i className="fa-solid fa-users"></i></span> Users
+                      </Nav.Link>
+                      <Nav.Link className="sidebar-link">
+                        <span className="icon"><i className="fa-solid fa-chart-line"></i></span> Sales Report
+                      </Nav.Link>
+          
+                      <div className="mt-4">
+                        <div className="sidebar-header">TOOLS</div>
+                        <Nav.Link className="sidebar-link active">
+                          <span className="icon"><i className="fa-solid fa-gear"></i></span> Account & Settings
+                        </Nav.Link>
+                        <Nav.Link className="sidebar-link">
+                          <span className="icon"><i className="fa-solid fa-circle-question"></i></span> Help
+                        </Nav.Link>
+                        <div className="dark-mode-switch mt-3">
+                          <Form.Check type="switch" label="Dark Mode" />
+                        </div>
+                      </div>
+                    </Nav>
+                  </div>
+                   </div>
+              
+            <div
+          style={{
+            flex: 1,
+            padding: "2rem",
+            backgroundColor: "#F7F7F7",
+            marginLeft: "250px",
+            paddingTop: "70px",
+            minHeight: "100vh",
+          }}
+        >
+        
+        <div className="container-fluid py-3">
+      <h4 className="fw-bold">Dashboard</h4>
+      <p className="text-muted">Dashboard</p>
 
-        {/* Main content */}
-        <Col md={10} className="p-3">
-          {/* Top Navbar */}
-          <Navbar expand="lg" className="mb-4">
-            <Container fluid>
-              <Form className="d-flex w-50">
-                <FormControl
-                  type="search"
-                  placeholder="Search product"
-                  className="me-2"
+      {/* Notification Center Sales */}
+      <div className="row">
+        <div className="col-lg-4 mb-3">
+          <div className="card p-3">
+            <div className="d-flex justify-content-between">
+              <h6 className="fw-bold">Notification Center Sales</h6>
+              <a href="/" className="text-decoration-none">Show All</a>
+            </div>
+            {dashboardData.notifications.map((n) => (
+              <div key={n.id} className="d-flex align-items-center border p-2 rounded my-2">
+                <img
+                  src="/user.png"
+                  alt="user"
+                  width="40"
+                  height="40"
+                  className="rounded-circle me-2"
                 />
-                <Button variant="outline-secondary">Search</Button>
-              </Form>
-              <Nav>
-                <Nav.Link><i className="bi bi-bell"></i></Nav.Link>
-                <Nav.Link><i className="bi bi-gear"></i></Nav.Link>
-                <Nav.Link className="fw-bold">NAPOLEON</Nav.Link>
-              </Nav>
-            </Container>
-          </Navbar>
+                <span>
+                  <strong>{n.name}</strong> just sold a {n.product} for ₦{n.price}
+                </span>
+              </div>
+            ))}
+          </div>
+        </div>
 
-          {/* Dashboard Heading */}
-          <h2 className="fw-bold mb-3">Dashboard</h2>
+        {/* Stats Cards */}
+        <div className="col-lg-2 mb-3">
+          <div className="card p-3 text-white bg-primary">
+            <h6>Total Revenue</h6>
+            <h4>₦{dashboardData.stats.totalRevenue.toLocaleString()}</h4>
+            <small className="text-white">↑ 10.4% From last week</small>
+          </div>
+        </div>
 
-          {/* Row: Notification Center + Revenue/Stats */}
-          <Row className="mb-4">
-            <Col md={8}>
-              <Card>
-                <Card.Header className="d-flex justify-content-between">
-                  Notification Center Sales <Button variant="link">Show All</Button>
-                </Card.Header>
-                <ListGroup variant="flush">
-                  <ListGroup.Item>
-                    Napoleon Mark just sold a sink for ₦3000
-                  </ListGroup.Item>
-                  <ListGroup.Item>
-                    Napoleon Mark just sold a sink for ₦3000
-                  </ListGroup.Item>
-                </ListGroup>
-              </Card>
-            </Col>
-            <Col md={4}>
-              <Row>
-                <Col md={12} className="mb-3">
-                  <Card bg="primary" text="white">
-                    <Card.Body>
-                      <Card.Title>Total Revenue</Card.Title>
-                      <Card.Text>₦91,000</Card.Text>
-                      <small>+5.8% From last week</small>
-                    </Card.Body>
-                  </Card>
-                </Col>
-                <Col md={12}>
-                  <Card bg="light">
-                    <Card.Body>
-                      <Card.Title>Total Customers</Card.Title>
-                      <Card.Text>5,000</Card.Text>
-                      <small>+1.5% From last week</small>
-                    </Card.Body>
-                  </Card>
-                </Col>
-              </Row>
-            </Col>
-          </Row>
+        <div className="col-lg-2 mb-3">
+          <div className="card p-3">
+            <h6>Total Customer</h6>
+            <h4>{dashboardData.stats.totalCustomer.toLocaleString()}</h4>
+            <small className="text-success">↑ 1.5% From last week</small>
+          </div>
+        </div>
 
-          {/* Row: Chart + Expenditure/Product Sold */}
-          <Row className="mb-4">
-            <Col md={8}>
-              <Card>
-                <Card.Header>Your Sales This Month</Card.Header>
-                <Card.Body>
-                  {/* Placeholder for Chart */}
-                  <div className="p-5 text-center text-muted">[Chart here]</div>
-                </Card.Body>
-              </Card>
-            </Col>
-            <Col md={4}>
-              <Row>
-                <Col md={12} className="mb-3">
-                  <Card>
-                    <Card.Body>
-                      <Card.Title>Total Expenditure</Card.Title>
-                      <Card.Text>₦12,000</Card.Text>
-                      <small>+3.6% From last week</small>
-                    </Card.Body>
-                  </Card>
-                </Col>
-                <Col md={12}>
-                  <Card>
-                    <Card.Body>
-                      <Card.Title>Total Product Sold</Card.Title>
-                      <Card.Text>50</Card.Text>
-                      <small>-1.5% From last week</small>
-                    </Card.Body>
-                  </Card>
-                </Col>
-              </Row>
-            </Col>
-          </Row>
+        <div className="col-lg-2 mb-3">
+          <div className="card p-3">
+            <h6>Total Expenditure</h6>
+            <h4>₦{dashboardData.stats.totalExpenditure.toLocaleString()}</h4>
+            <small className="text-success">↑ 3.6% From last week</small>
+          </div>
+        </div>
 
-          {/* Row: Login Notification Center + Popular Products */}
-          <Row>
-            <Col md={6}>
-              <Card>
-                <Card.Header className="d-flex justify-content-between">
-                  Login Notification Center <Button variant="link">Show All</Button>
-                </Card.Header>
-                <Table striped hover>
-                  <thead>
-                    <tr>
-                      <th>Name</th>
-                      <th>Time In</th>
-                      <th>Time Out</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <td>Napoleon Mark</td>
-                      <td>1:00 AM</td>
-                      <td>3:00 AM</td>
-                    </tr>
-                    <tr>
-                      <td>Napoleon Mark</td>
-                      <td>1:00 AM</td>
-                      <td>3:00 AM</td>
-                    </tr>
-                  </tbody>
-                </Table>
-              </Card>
-            </Col>
-            <Col md={6}>
-              <Card>
-                <Card.Header className="d-flex justify-content-between">
-                  Product Popular <Button variant="link">Show All</Button>
-                </Card.Header>
-                <Table striped hover>
-                  <thead>
-                    <tr>
-                      <th>Product</th>
-                      <th>Price</th>
-                      <th>Sales</th>
-                      <th>Status</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <td>Pipes</td>
-                      <td>₦20,000</td>
-                      <td>3,000</td>
-                      <td><span className="text-success">Success</span></td>
-                    </tr>
-                    <tr>
-                      <td>Screws</td>
-                      <td>₦20,000</td>
-                      <td>2,311</td>
-                      <td><span className="text-success">Success</span></td>
-                    </tr>
-                  </tbody>
-                </Table>
-              </Card>
-            </Col>
-          </Row>
-        </Col>
-      </Row>
-    </Container>
+        <div className="col-lg-2 mb-3">
+          <div className="card p-3">
+            <h6>Total Product Sold</h6>
+            <h4>{dashboardData.stats.totalProductSold}</h4>
+            <small className="text-danger">↓ 1.5% From last week</small>
+          </div>
+        </div>
+      </div>
+
+      {/* Graph Placeholder + Login Notification */}
+      <div className="row">
+        <div className="col-lg-8 mb-3">
+          <div className="card p-3">
+            <div className="d-flex justify-content-between">
+              <h6 className="fw-bold">Your Sales this month</h6>
+              <a href="/">Show All</a>
+            </div>
+            <div style={{ height: "200px" }} className="bg-light d-flex justify-content-center align-items-center">
+              <span className="text-muted">
+                Avg Item: ₦{dashboardData.salesThisMonth.avgItemValue.toLocaleString()} |
+                Avg Month: ₦{dashboardData.salesThisMonth.avgMonthValue.toLocaleString()}
+              </span>
+            </div>
+          </div>
+        </div>
+
+        <div className="col-lg-4 mb-3">
+          <div className="card p-3">
+            <div className="d-flex justify-content-between">
+              <h6 className="fw-bold">Login Notification Center</h6>
+              <a href="/">Show All</a>
+            </div>
+            <table className="table table-borderless mt-2">
+              <thead>
+                <tr>
+                  <th>Name</th>
+                  <th>Time In</th>
+                  <th>Time Out</th>
+                </tr>
+              </thead>
+              <tbody>
+                {dashboardData.loginRecords.map((login) => (
+                  <tr key={login.id}>
+                    <td>{login.name}</td>
+                    <td>{login.timeIn}</td>
+                    <td>{login.timeOut}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      {/* Product Popular */}
+      <div className="card p-3">
+        <div className="d-flex justify-content-between">
+          <h6 className="fw-bold">Product Popular</h6>
+          <a href="/">Show All</a>
+        </div>
+        <table className="table align-middle">
+          <thead>
+            <tr>
+              <th>Product</th>
+              <th>Price</th>
+              <th>Sales</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            {dashboardData.popularProducts.map((p) => (
+              <tr key={p.id}>
+                <td>{p.code} {p.name}</td>
+                <td>₦{p.price.toLocaleString()}</td>
+                <td>{p.sales.toLocaleString()}</td>
+                <td>
+                  <span className={`badge bg-${p.status === "Success" ? "success" : "secondary"}`}>
+                    {p.status}
+                  </span>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </div>
+      </div>
+      </div>
+   
   );
 };
 

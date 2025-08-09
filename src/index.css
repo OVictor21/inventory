@@ -24,7 +24,7 @@
 
 .nav-body {
   flex-grow: 1;
-  background-color: #D3D3D3;
+  background-color: white;
   width: 35vw;
   height: 65vw;
 }
@@ -187,7 +187,7 @@ font-size: 1.2vw;
 }
 
 .nav{
-  background-color: #D3D3D3;
+  background-color: white;
 }
 
 .logo {
@@ -214,13 +214,13 @@ font-size: 1.2vw;
 }
 
 nav {
-  background-color: #D3D3D3;
+  background-color: white;
   
 }
 
 
 .navbar-brand img {
-  max-width: 10vw;
+  max-width: 8vw;
   min-width: 5vw;
 }
 
@@ -254,9 +254,38 @@ nav {
   color: rgb(143, 174, 240) !important;
 }
 
-.logout{
-  background-color: #03172c !important;
+
+.signin-btn{
+  background-color: #3590f1 !important;
+  width: 100px;
+  height: 6vh;
+  padding: 10px;
 }
+
+.signup-btn{
+  background-color:white;
+  border: 1px solid #3590f1;
+  width: 100px;
+  height: 6vh;
+  padding: 10px;
+}
+
+.sign-text{
+  color: white;
+  text-decoration: none;
+  font-weight: 600;
+  padding: 13px;
+
+}
+
+.signup-text{
+  color: #3590f1;
+  text-decoration: none;
+  font-weight: 600;
+  padding: 13px;
+
+}
+
 
 .logout:hover {
   color: rgb(143, 174, 240) !important;
@@ -854,3 +883,110 @@ nav {
   color: #0d6efd !important; /* optional: change text color on hover */
 }
 
+.sn{
+  width: 100px;
+  height: 6vh;
+}
+
+.box {
+  background-color: #CBD8F8;
+  border: 6px solid white;
+
+}
+
+.grw-text{
+  font-size: 25px;
+  font-weight: bold;
+}
+
+.iv-text{
+  font-size: 15px;
+  color: #03172c;
+}
+
+.testimonial-card {
+  min-width: 280px;
+  max-width: 280px;
+  flex: 0 0 auto;
+  background-color: white;
+  border: 2px solid #e4ebfb;
+  border-radius: 16px;
+  padding: 16px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+}
+
+.scroll-btn {
+  position: absolute;
+  top: 40%;
+  transform: translateY(-50%);
+  background-color: #ffffff;
+  border: none;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  font-size: 20px;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.15);
+  z-index: 2;
+  cursor: pointer;
+}
+
+.left-btn {
+  left: 0;
+}
+
+.right-btn {
+  right: 0;
+}
+
+@media (max-width: 768px) {
+  .scroll-btn {
+    display: none;
+  }
+}
+
+.custom-scrollbar {
+  scrollbar-width: none; /* Firefox */
+}
+
+.custom-scrollbar::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Opera */
+}
+
+.user-card{
+  border: 10px solid #CBD8F8 !important;
+}
+
+.cta-banner {
+  background: linear-gradient(135deg, #f0f4ff, #dbe7ff);
+  border-radius: 20px;
+  padding: 60px 30px;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
+  max-width: 900px;
+  position: relative;
+  overflow: hidden;
+  border: 5px solid white;
+}
+
+/* Optional background icons (subtle) */
+.cta-banner::before,
+.cta-banner::after {
+  content: "";
+  background-repeat: no-repeat;
+  background-size: 50px;
+  position: absolute;
+  opacity: 0.1;
+}
+
+.cta-banner::before {
+  top: 20px;
+  left: 20px;
+}
+
+.cta-banner::after {
+  bottom: 20px;
+  right: 20px;
+}
+
+.foot{
+  background-color: #8888881F;
+}

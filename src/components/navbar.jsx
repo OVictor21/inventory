@@ -2,7 +2,7 @@ import 'bootstrap/dist/js/bootstrap.bundle.min';
 
 const Navbar = () => {
   return (
-    <nav className="navbar navbar-expand-md justify-content-center p-3 z-1">
+    <nav className="navbar navbar-expand-md justify-content-center p-1 z-1 shadow">
 
     <a className="navbar-brand d-flex me-auto" href="all">
         <img class="block w-100" src="/logo.png" alt="Logo"/>
@@ -19,41 +19,29 @@ const Navbar = () => {
             </li>
 
             <li className="nav-item m-2">
-                <a className="nav-link nav-text" href="/Products">Products</a>
+                <a className="nav-link nav-text" href="/About-us">About Us</a>
             </li>
            
             <li className="nav-item m-2">
-                <a className="nav-link nav-text" href="/Inventory">Inventory</a>
+                <a className="nav-link nav-text" href="/Resources">Resources</a>
             </li>
 
             <li className="nav-item m-2">
-                <a className="nav-link nav-text" href="/Order">Order</a>
+                <a className="nav-link nav-text" href="/Contact">Contact Us</a>
             </li>
-            <li className="nav-item m-2">
-                <a className="nav-link nav-text" href="/Notifications" >Notifications</a>
-            </li>
-            <li>
-            <div class="dropdown m-2">
-  <button type="button" class="btn dropdown-toggle nav-link nav-text" data-bs-toggle="dropdown">
-   Settings
-  </button>
-  <ul class="dropdown-menu drop bg-body-secondary">
-    <li><a class="dropdown-item" href="/Editprofile">Edit Profile</a></li>
-    <li><a class="dropdown-item" href="/Security">Security</a></li>
-    <li><a class="dropdown-item" href="/Adduser">Add an Account</a></li>
-    <li><a class="dropdown-item" href="/Removeuser">Remove user Account</a></li>
-  </ul>
-</div>
-            </li>
-
 
         </ul>
 
-        <ul className="navbar-nav ms-auto justify-content-end mx-5">
-                    <li className="nav-item logout p-2 rounded-2">
-                        <a className="nav-link nav-text-2 text-nowrap" href="/Sign in/index.html">Log out</a>
-                    </li>
-                </ul>
+         <div className="signup-btn justify-content-end mx-2 rounded mt-3 mt-md-0">            
+  <a className="signup-text text-nowrap" href="/Login/index.html">Sign up</a>
+</div>
+
+<div className="signin-btn justify-content-end mx-2 rounded mt-3 mt-md-0">
+  <a className="sign-text text-nowrap" href="/Signup/index.html">Sign in</a>
+</div>
+
+
+      
     </div>
 </nav>
   )
