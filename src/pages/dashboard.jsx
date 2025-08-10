@@ -49,7 +49,7 @@ const Dashboard = () => {
       },
       {
         id: 4,
-        name: "Bolts",
+        name: "Boltss",
         code: "021231",
         price: 20000,
         sales: 1661,
