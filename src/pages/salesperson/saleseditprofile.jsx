@@ -50,7 +50,6 @@ const Saleseditprofile = () => {
       {/* Footer */}
       <footer className="mt-auto text-center py-3 w-100 position-absolute footers text-white ">
         <p className="mb-0">&copy;2024 BestworthJvp. All rights reserved.</p>
-       
       </footer>
     </div>
   </div>
