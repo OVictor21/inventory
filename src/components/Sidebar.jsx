@@ -23,7 +23,7 @@ function SectionTitle({ children }) {
 
 function NavLinkItem({ icon: Icon, label, href = "#", className = "" }) {
   return (
-    <a href={href} className={`nav-item ${className}`}>
+    <a href={href} className={`nav_item ${className}`}>
       <Icon size={ICON} />
       <span>{label}</span>
     </a>
@@ -41,7 +41,7 @@ function NavToggleItem({
   return (
     <button
       type="button"
-      className="nav-item"
+      className="nav_item"
       aria-expanded={open}
       aria-controls={controlsId}
       onClick={onToggle}
@@ -64,17 +64,15 @@ export default function Sidebar() {
   const submenuId = "sb-products";
 
   return (
-    <aside className="sidebar shadow-0 p-0 pb-5 z-master">
+    <aside className="sidebar shadow-0 p-0 pb-5 z-100">
       <div className="sb-header d-flex top-0 align-items-center justify-content-between ">
-        <h2 className="sidebar-title m-0">LOGO</h2>
         <PanelLeftOpen size={ICON} className="text-muted" />
       </div>
       <div className="sb-scroll">
         <div className="company-card d-flex align-items-center gap-2">
           <img src="/logo.png" alt="Company logo" width="28" height="28" className="rounded" />
           <div className="small">
-            <div className="text-muted">Company</div>
-            <div className="fw-semibold">richbon HO</div>
+            <h5 className="fw-bold">Bestworth JVP</h5>
           </div>
         </div>
 
@@ -109,7 +107,7 @@ export default function Sidebar() {
         <NavLinkItem icon={Settings} label="Account & Settings" />
         <NavLinkItem icon={HelpCircle} label="Help" />
 
-        <div className="nav-item no-hover justify-content-between" role="group" aria-label="Dark mode switch">
+        <div className="nav_item no-hover justify-content-between" role="group" aria-label="Dark mode switch">
           <span className="d-flex align-items-center gap-2">
             <Moon size={ICON} /> <span>Dark Mode</span>
           </span>

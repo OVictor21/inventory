@@ -1,65 +1,131 @@
-import Navbar from "../components/navbar";
+import {
+  Row,
+  Col,
+  Form,
+  Button,
+  Card,
+} from "react-bootstrap";
+import { Link } from "react-router-dom";
+import Sidebar from "../components/Sidebar";
+import Navbar2 from "../components/navbar2";
 
 const Adduser = () => {
   return (
-    <div className="d-flex flex-column min-vh-100">
-    <Navbar />
+    <div>
+      <div>
+        <Navbar2 />
+        <Sidebar />
 
-    <div className="flex-grow-1 d-flex flex-column justify-content-center align-items-center p-4 admin-body">
-      <div className="card shadow p-3" style={{ maxWidth: '500px', width: '100%' }}>
-        <h3 className="text-center mb-4 signuptext">Add an Account</h3>
-        <form>
-          <div className="mb-3">
-            <label htmlFor="name" className="form-label">
-              First Name
-            </label>
-            <input type="text" className="form-control" id="name" required />
+        {/* Main Content */}
+       <div
+        style={{
+          flex: 1,
+          padding: "2rem",
+          backgroundColor: "#F7F7F7",
+          marginLeft: "250px",
+          paddingTop: "70px",
+          minHeight: "100vh",
+        }}
+      >
+          <div className="mb-4">
+            <h4 className="fw-bold">Add User</h4>
+            <span className="medium ">
+              <Link to="/dashboard" className="medium das">
+                Dashboard
+              </Link>
+              <span className="mx-1">
+                <i className="fa-solid fa-chevron-right"></i>
+              </span>
+              <Link to="/profile" className="medium fw-bold das1">
+                User
+              </Link>
+              <span className="mx-1">
+                <i className="fa-solid fa-chevron-right"></i>
+              </span>
+              <Link to="/profile" className="medium fw-bold das1">
+                Add User
+              </Link>
+            </span>
           </div>
 
-          <div className="mb-3">
-            <label htmlFor="name" className="form-label">
-              Last Name
-            </label>
-            <input type="text" className="form-control" id="name" required />
-          </div>
+          {/* Left aligned narrower form */}
+          <Row>
+            <Col md={6} lg={5}>
+              <Card className="shadow-sm rounded-4">
+                <Card.Body>
+                  <h5 className="fw-bold">User</h5>
 
-          <div className="mb-3">
-            <label htmlFor="amount" className="form-label">
-              Phone Number
-            </label>
-            <input type="text" className="form-control" id="amount" required />
-          </div>
+                  <Form>
+                    <Row className="mb-3">
+                      <Col md={12}>
+                        <Form.Label>Name of user</Form.Label>
+                        <Form.Control type="text" placeholder="Input name" />
+                      </Col>
+                    </Row>
 
-          <div className="mb-3">
-            <label htmlFor="model" className="form-label">
-              Email Address
-            </label>
-            <input type="text" className="form-control" id="model" required />
-          </div>
+                    <Row className="mb-3">
+                      <Col md={6}>
+                        <Form.Label>Email</Form.Label>
+                        <Form.Control type="text" placeholder="Input Email" />
+                      </Col>
+                      <Col md={6}>
+                        <Form.Label>Phone number</Form.Label>
+                        <Form.Control
+                          type="text"
+                          placeholder="Input Phone number"
+                        />
+                      </Col>
+                    </Row>
 
-          <div className="mb-3">
-            <label htmlFor="price" className="form-label">
-              Password
-            </label>
-            <input type="text" className="form-control" id="price" required />
-          </div>
+                    <Row className="mb-3">
+                      <Col md={6}>
+                        <Form.Label>Gender</Form.Label>
+                        <Form.Select>
+                          <option>Select Gender</option>
+                          <option>Male</option>
+                          <option>Female</option>
+                        </Form.Select>
+                      </Col>
+                      <Col md={6}>
+                        <Form.Label>Date of birth</Form.Label>
+                        <Form.Control
+                          type="text"
+                          placeholder="Input Date of birth"
+                        />
+                      </Col>
+                    </Row>
 
+                    <Row className="mb-3">
+                      <Col md={12}>
+                        <Form.Label>Address</Form.Label>
+                        <textarea
+                          className="form-control"
+                          rows="3"
+                          placeholder="Input Address"
+                        ></textarea>
+                      </Col>
+                    </Row>
 
-
-          <div className="d-grid mt-3">
-            <button type="submit" className="btn btn-primary">
-              Create
-            </button>
-          </div>
-        </form>
+                    <Row className="mb-3">
+                      <Col md={12}>
+                        <Button
+                          variant="primary"
+                          type="submit"
+                          className="rounded-4 px-4 w-100"
+                        >
+                          Add User
+                        </Button>
+                      </Col>
+                    </Row>
+                  </Form>
+                </Card.Body>
+              </Card>
+            </Col>
+          </Row>
+        </div>
       </div>
     </div>
-
-    <footer className="text-center py-3 w-100 footers text-white">
-      <p className="mb-0">&copy;2024 BestworthJvp. All rights reserved.</p>
-    </footer>
-  </div>
-  )
-}
+  );
+};
 
 export default Adduser;

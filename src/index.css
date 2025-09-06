@@ -1012,7 +1012,7 @@ nav {
   margin: 12px 8px 6px;
 }
 
-.nav-item {
+.nav_item {
   display: flex;
   align-items: center;
   gap: 10px;
@@ -1025,20 +1025,20 @@ nav {
   border: 0;
   width: calc(100% - 8px);
 }
-.nav-item svg {
+.nav_item svg {
   color: #9aa1a9;
 }
-.nav-item:hover {
+.nav_item:hover {
   background: #f5f7fa;
 }
-.nav-item.active {
+.nav_item.active {
   background: var(--active);
   font-weight: 600;
 }
-.nav-item.active svg {
+.nav_item.active svg {
   color: #111;
 }
-.nav-item.no-hover:hover {
+.nav_item.no-hover:hover {
   background: transparent;
 }
 
@@ -1133,4 +1133,20 @@ nav {
 .app-shell{
   display: flex;
   height: 100dvh;             
+}
+
+.order-t {
+  text-decoration: none;
+  color: black;
+}
+
+.order-h{
+  background-color: #D9EDFF;
+  color: cornflowerblue;
+}
+
+.not-card{
+  height: 50px;
+  max-height: 200px;
+  width: 200px;
 }

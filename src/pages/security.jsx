@@ -1,17 +1,14 @@
 import React, { useState } from "react";
 import {
-  Container,
   Row,
   Col,
-  Navbar,
-  Nav,
   Form,
   Button,
   Card,
-  Accordion,
 } from "react-bootstrap";
 import { Link } from "react-router-dom";
-
+import Sidebar from "../components/Sidebar";
+import Navbar2 from "../components/navbar2";
 
 
 const Security = () => {
@@ -34,118 +31,12 @@ const Security = () => {
 
   return (
     <div>
-      {/* Top Navbar */}
-      <Navbar
-        expand="lg"
-        className="top-navbar d-flex justify-content-between align-items-center px-4 py-2"
-        style={{
-          width: "100%",
-          position: "fixed",
-          top: 0,
-          left: 0,
-          zIndex: 1030,
-          backgroundColor: "#fff",
-        }}
-      >
-        <Form className="d-flex w-25 bar">
-          <Form.Control
-            type="search"
-            placeholder="Search product"
-            className="search-input"
-          />
-        </Form>
-        <Nav className="ms-auto d-flex align-items-center">
-          <Nav.Link>
-            <i className="bi bi-bell-fill fs-5"></i>
-          </Nav.Link>
-          <Nav.Link>
-            <i className="bi bi-envelope-fill fs-5"></i>
-          </Nav.Link>
-          <Nav.Link className="fw-bold">
-            Napoleon Mark <span className="text-muted">Admin</span>
-          </Nav.Link>
-        </Nav>
-      </Navbar>
+      <Navbar2/>
+      <Sidebar />
 
-      <div
-        style={{
-          display: "flex",
-          height: "auto",
-        }}
-      >
+    <div>
         {/* Sidebar */}
-        <div
-          style={{
-            width: "250px",
-            backgroundColor: "#f8f9fa",
-            borderRight: "1px solid #dee2e6",
-            padding: "1rem",
-            paddingTop: "70px",
-            display: "flex",
-            flexDirection: "column",
-            height: "100vh",
-            position: "fixed",
-            top: 0,
-            left: 0,
-            zIndex: 1020,
-          }}
-        >
-          <div className="logo mb-4">
-            <img src="./logo.png" alt="Logo" className="logo-img" />
-            <span className="logo-text fw-bold ms-2">Bestworth</span>
-          </div>
-
-          <Nav className="flex-column side">
-            <div className="sidebar-header">GENERAL</div>
-            <Nav.Link className="sidebar-link">
-              <span className="icon">
-                <i className="fa-solid fa-house"></i>
-              </span>
-              Dashboard
-            </Nav.Link>
-
-            {/* Product Dropdown */}
-            <Accordion defaultActiveKey="0" flush>
-              <Accordion.Item eventKey="0">
-                <Accordion.Header className="side">
-                  <span className="icon">
-                    <i className="fa-solid fa-cart-shopping"></i>
-                  </span>
-                  Product
-                </Accordion.Header>
-                <Accordion.Body className="ps-4 side">
-                  <Nav.Link className="sidebar-link">Pasin and Pedestal</Nav.Link>
-                  <Nav.Link className="sidebar-link">WC</Nav.Link>
-                  <Nav.Link className="sidebar-link">Categories</Nav.Link>
-                </Accordion.Body>
-              </Accordion.Item>
-            </Accordion>
-
-            <Nav.Link className="sidebar-link">
-              <span className="icon"><i className="fa-solid fa-receipt"></i></span> Order
-            </Nav.Link>
-            <Nav.Link className="sidebar-link">
-              <span className="icon"><i className="fa-solid fa-users"></i></span> Users
-            </Nav.Link>
-            <Nav.Link className="sidebar-link">
-              <span className="icon"><i className="fa-solid fa-chart-line"></i></span> Sales Report
-            </Nav.Link>
-
-            <div className="mt-4">
-              <div className="sidebar-header">TOOLS</div>
-              <Nav.Link className="sidebar-link active">
-                <span className="icon"><i className="fa-solid fa-gear"></i></span> Account & Settings
-              </Nav.Link>
-              <Nav.Link className="sidebar-link">
-                <span className="icon"><i className="fa-solid fa-circle-question"></i></span> Help
-              </Nav.Link>
-              <div className="dark-mode-switch mt-3">
-                <Form.Check type="switch" label="Dark Mode" />
-              </div>
-            </div>
-          </Nav>
-        </div>
-
+        
         {/* Main Content */}
         <div
           style={{

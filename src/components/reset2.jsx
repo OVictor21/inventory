@@ -1,55 +1,86 @@
-const   Reset2 = () => {
-    return (
-      <div className="d-flex">
-    
-        <div className="side text-white d-flex flex-column align-items-center p-3 vh-100" style={{ width: '300px' }}>
-          <a href="/" className="d-block mb-4">
+import React, { useEffect } from "react";
+import { Container, Row, Col, Form, Button, InputGroup } from "react-bootstrap";
+
+const Reset2 = () => {
+  useEffect(() => {
+    const raw = JSON.stringify({
+      username: "admin",
+      password: "admin",
+    });
+
+    const requestOptions = {
+      method: "POST",
+      body: raw,
+      headers: {
+        "Content-Type": "application/json",
+      },
+      redirect: "follow",
+    };
+
+    fetch("https://sims-mup1.onrender.com/auth/login/", requestOptions)
+      .then((response) => response.text())
+      .then((result) => console.log(result))
+      .catch((error) => console.log("error", error));
+  }, []);
+
+  return (
+    <Container fluid className="bg-white min-vh-100 d-flex align-items-center justify-content-center mt-3 mt-md-0">
+      <Row className="w-100">
+        <Col xs={12} md={6} lg={4} className="mx-auto">
+          {/* Logo + Text */}
+          <div className="position-absolute top-0 start-0 p-3 d-flex align-items-center">
             <img
-              src="./logo.png" 
+              src="./logo.png"
               alt="Logo"
-              className="img-fluid"
+              className="me-1 logo"
             />
-          </a>
-        </div>
-  
-    
-        <div className="flex-grow-1 d-flex flex-column justify-content-center align-items-center p-4">
-          <div className="card shadow p-3" style={{ maxWidth: '500px', width: '100%' }}>
-            <h3 className="text-center mb-4 signuptext">Reset Password</h3>
-            <p className="text-center">Enter your password twice </p>
-            <form>
-    
-              <div className="mb-3">
-                <label htmlFor="password" className="form-label">
-                  NEW PASSWORD
-                </label>
-                <input type="password" className="form-control" id="password" required />
-              </div>
-
-              <div className="mb-3">
-                <label htmlFor="Confirm password" className="form-label">
-                  CONFIRM PASSWORD
-                </label>
-                <input type="password" className="form-control" id="Confirm password" required />
-              </div>
-
-              <div className="d-grid">
-              <a href="/Login" className="btn btn-primary">Reset</a>
-            
-            </div>
-             
-  
-            </form>
+            <h1 className="fw-bold">Bestworth</h1>
           </div>
-  
-          <footer className="mt-auto text-center py-3 w-100 position-absolute footers text-white ">
-            <p className="mb-0">&copy;2024 BestworthJvp. All rights reserved.</p>
-           
-          </footer>
-        </div>
-      </div>
-    );
-  };
-  
-  export default Reset2;
-  
+
+          <div className="p-4 shadow rounded bg-white">
+            <h3 className="fw-bold mb-4">Reset Password</h3>
+
+
+            <Form>
+              <Form.Group className="mb-3" controlId="formBasicEmail">
+                <Form.Label>New Password</Form.Label>
+                <InputGroup>
+                  <Form.Control type="Password" placeholder="Input Password" />
+                  <InputGroup.Text></InputGroup.Text>
+                </InputGroup>
+              </Form.Group>
+
+              <Form.Group className="mb-3" controlId="formBasicPassword">
+                <Form.Label>Confirm Password</Form.Label>
+                <InputGroup>
+                  <Form.Control type="password" placeholder="Confirm password" />
+                  <InputGroup.Text></InputGroup.Text>
+                </InputGroup>
+              </Form.Group>
+
+              <div className="d-flex justify-content-between align-items-center mb-3">
+                <Form.Check type="checkbox" label="Remember me ?" />
+                <a href="#" className="text-decoration-none">
+                  Forget Password
+                </a>
+              </div>
+
+              <Button variant="primary" type="submit" className="w-100">
+                Sign In
+              </Button>
+            </Form>
+
+            <p className="mt-3 text-center text-muted">
+              Do not have account?{" "}
+              <a href="#" className="text-decoration-none">
+                Sign Up
+              </a>
+            </p>
+          </div>
+        </Col>
+      </Row>
+    </Container>
+  );
+};
+
+export default Reset2;
