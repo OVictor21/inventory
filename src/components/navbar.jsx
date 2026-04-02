@@ -42,13 +42,13 @@ const Navbar = () => {
         </ul>
 
         <div className="signup-btn justify-content-end mx-2 rounded mt-3 mt-md-0">
-          <a className="signup-text text-nowrap" href="/Login/index.html">
+          <a className="signup-text text-nowrap" href="/Login">
             Sign up
           </a>
         </div>
 
         <div className="signin-btn justify-content-end mx-2 rounded mt-3 mt-md-0">
-          <a className="sign-text text-nowrap" href="/Signup/index.html">
+          <a className="sign-text text-nowrap" href="/Signup">
             Sign in
           </a>
         </div>
