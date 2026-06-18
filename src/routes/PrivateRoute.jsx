@@ -10,7 +10,7 @@ return <div className="d-flex justify-content-center mt-5">Loading...</div>;
 }
 
 if (!isLoggedIn) {
-return <Navigate to="/login" state={{ from: location }} replace />;
+return <Navigate to="/Login" state={{ from: location }} replace />;
 }
 
 if (requiredRole && user?.role !== requiredRole) {
