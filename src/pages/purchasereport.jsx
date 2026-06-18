@@ -1,3 +1,4 @@
+// src/pages/purchasereport.jsx
 import React, { useState } from "react";
 import {
   Container,
@@ -10,6 +11,7 @@ import {
   Dropdown,
   Modal,
 } from "react-bootstrap";
+import { Link } from "react-router-dom"; // ✅ use Link for real navigation
 import { FaSearch } from "react-icons/fa";
 import { BsThreeDotsVertical } from "react-icons/bs";
 import * as XLSX from "xlsx";
@@ -19,69 +21,42 @@ import Sidebar from "../components/Sidebar";
 import Navbar2 from "../components/navbar2";
 
 const PurchaseReport = () => {
-  const [activeTab, setActiveTab] = useState("All Orders");
+  const activeTab = "All Orders"; // ✅ remove unused setter
+
   const [searchQuery, setSearchQuery] = useState("");
   const [showFilter, setShowFilter] = useState(false);
   const [filterPayment, setFilterPayment] = useState("All");
   const [filterStatus, setFilterStatus] = useState("All");
 
   const orders = [
-    {
-      id: "021231",
-      product: "Pipes",
-      user: "Napoleon",
-      price: "₦20,000",
-      date: "04/17/23",
-      payment: "Paid",
-      status: "Done",
-    },
-    {
-      id: "021232",
-      product: "Bolts",
-      user: "Joseph",
-      price: "₦15,000",
-      date: "04/18/23",
-      payment: "Unpaid",
-      status: "Canceled",
-    },
-    {
-      id: "021233",
-      product: "Nails",
-      user: "Mary",
-      price: "₦10,000",
-      date: "04/19/23",
-      payment: "Paid",
-      status: "Done",
-    },
+    { id: "021231", product: "Pipes", user: "Napoleon", price: "₦20,000", date: "04/17/23", payment: "Paid", status: "Done" },
+    { id: "021232", product: "Bolts", user: "Joseph", price: "₦15,000", date: "04/18/23", payment: "Unpaid", status: "Canceled" },
+    { id: "021233", product: "Nails", user: "Mary", price: "₦10,000", date: "04/19/23", payment: "Paid", status: "Done" },
   ];
 
-  // 🔍 Search + Filter
   const filteredOrders = orders.filter((order) => {
+    const q = searchQuery.toLowerCase();
     const matchesSearch =
-      order.id.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      order.product.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      order.user.toLowerCase().includes(searchQuery.toLowerCase());
+      order.id.toLowerCase().includes(q) ||
+      order.product.toLowerCase().includes(q) ||
+      order.user.toLowerCase().includes(q);
 
-    const matchesPayment =
-      filterPayment === "All" || order.payment === filterPayment;
-
+    const matchesPayment = filterPayment === "All" || order.payment === filterPayment;
     const matchesStatus = filterStatus === "All" || order.status === filterStatus;
 
     return matchesSearch && matchesPayment && matchesStatus;
   });
 
-  // 📤 Export Excel
   const exportExcel = () => {
     const worksheet = XLSX.utils.json_to_sheet(filteredOrders);
     const workbook = XLSX.utils.book_new();
-    XLSX.utils.book_append_sheet(workbook, worksheet, "Sales Report");
-    XLSX.writeFile(workbook, "sales_report.xlsx");
+    XLSX.utils.book_append_sheet(workbook, worksheet, "Purchase Report");
+    XLSX.writeFile(workbook, "purchase_report.xlsx");
   };
 
-  // 📤 Export PDF
   const exportPDF = () => {
     const doc = new jsPDF();
-    doc.text("Sales Report", 14, 10);
+    doc.text("Purchase Report", 14, 10);
     doc.autoTable({
       head: [["ID", "Product", "User", "Price", "Date", "Payment", "Status"]],
       body: filteredOrders.map((order) => [
@@ -94,7 +69,7 @@ const PurchaseReport = () => {
         order.status,
       ]),
     });
-    doc.save("sales_report.pdf");
+    doc.save("purchase_report.pdf");
   };
 
   return (
@@ -118,15 +93,15 @@ const PurchaseReport = () => {
 
         <Container fluid className="mt-4">
           <Card className="p-3 shadow-sm" style={{ borderRadius: "15px" }}>
-            {/* Search + Filter + Export + Button */}
             <div className="d-flex justify-content-between align-items-center mb-3">
               <InputGroup style={{ maxWidth: "400px" }}>
                 <Form.Control
                   placeholder="Search for id, name, product"
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
+                  aria-label="Search purchase orders by id, product, or user"
                 />
-                <Button variant="outline-secondary">
+                <Button variant="outline-secondary" aria-label="Search">
                   <FaSearch />
                 </Button>
               </InputGroup>
@@ -157,17 +132,15 @@ const PurchaseReport = () => {
               </div>
             </div>
 
-            {/* Tabs */}
             <h6 className="fw-bold text-center order-h p-2 rounded">
               {activeTab}
             </h6>
 
-            {/* Table */}
             <Table striped hover responsive>
               <thead>
                 <tr>
                   <th>
-                    <Form.Check type="checkbox" />
+                    <Form.Check type="checkbox" aria-label="Select all purchase orders" />
                   </th>
                   <th>Orders</th>
                   <th>Users</th>
@@ -182,19 +155,24 @@ const PurchaseReport = () => {
                 {filteredOrders.map((order, index) => (
                   <tr key={index}>
                     <td>
-                      <Form.Check type="checkbox" />
+                      <Form.Check type="checkbox" aria-label={`Select order ${order.id}`} />
                     </td>
                     <td>
                       <img
                         src="/item.jpg"
-                        alt="product"
+                        alt={order.product}
                         width="30"
                         height="30"
                         className="me-2"
                       />
-                      <a href="#" className="fw-bold text-decoration-none">
+                      {/* ✅ Real, navigable link – fixes jsx-a11y/anchor-is-valid */}
+                      <Link
+                        to={`/purchases/${order.id}`}
+                        className="fw-bold text-decoration-none"
+                        aria-label={`View purchase order ${order.id}`}
+                      >
                         {order.id}
-                      </a>
+                      </Link>
                       <br />
                       {order.product}
                     </td>
@@ -203,46 +181,27 @@ const PurchaseReport = () => {
                     <td>{order.date}</td>
                     <td>
                       <span
-                        className={`badge ${
-                          order.payment === "Paid"
-                            ? "bg-success"
-                            : "bg-warning"
-                        }`}
-                        style={{
-                          fontSize: "14px",
-                          height: "40px",
-                          width: "120px",
-                          padding: "10px 22px",
-                        }}
+                        className={`badge ${order.payment === "Paid" ? "bg-success" : "bg-warning"}`}
+                        style={{ fontSize: "14px", height: "40px", width: "120px", padding: "10px 22px" }}
                       >
                         {order.payment}
                       </span>
                     </td>
                     <td>
                       <span
-                        className={`badge ${
-                          order.status === "Done" ? "bg-primary" : "bg-danger"
-                        }`}
-                        style={{
-                          fontSize: "14px",
-                          height: "40px",
-                          width: "120px",
-                          padding: "10px 22px",
-                        }}
+                        className={`badge ${order.status === "Done" ? "bg-primary" : "bg-danger"}`}
+                        style={{ fontSize: "14px", height: "40px", width: "120px", padding: "10px 22px" }}
                       >
                         {order.status}
                       </span>
                     </td>
                     <td>
                       <Dropdown>
-                        <Dropdown.Toggle
-                          as="span"
-                          style={{ cursor: "pointer" }}
-                        >
+                        <Dropdown.Toggle as="span" style={{ cursor: "pointer" }} aria-label={`Actions for ${order.id}`}>
                           <BsThreeDotsVertical />
                         </Dropdown.Toggle>
                         <Dropdown.Menu>
-                          <Dropdown.Item>Edit</Dropdown.Item>
+                          <Dropdown.Item as={Link} to={`/purchases/${order.id}`}>Edit</Dropdown.Item>
                           <Dropdown.Item>Delete</Dropdown.Item>
                         </Dropdown.Menu>
                       </Dropdown>
@@ -252,7 +211,6 @@ const PurchaseReport = () => {
               </tbody>
             </Table>
 
-            {/* Pagination */}
             <div className="d-flex justify-content-between align-items-center">
               <small>
                 1 - {filteredOrders.length} of {orders.length} Records
@@ -267,7 +225,6 @@ const PurchaseReport = () => {
         </Container>
       </div>
 
-      {/* 🔽 Filter Modal */}
       <Modal show={showFilter} onHide={() => setShowFilter(false)} centered>
         <Modal.Header closeButton>
           <Modal.Title>Filter Orders</Modal.Title>
@@ -279,6 +236,7 @@ const PurchaseReport = () => {
               <Form.Select
                 value={filterPayment}
                 onChange={(e) => setFilterPayment(e.target.value)}
+                aria-label="Filter by payment status"
               >
                 <option>All</option>
                 <option>Paid</option>
@@ -291,6 +249,7 @@ const PurchaseReport = () => {
               <Form.Select
                 value={filterStatus}
                 onChange={(e) => setFilterStatus(e.target.value)}
+                aria-label="Filter by order status"
               >
                 <option>All</option>
                 <option>Done</option>

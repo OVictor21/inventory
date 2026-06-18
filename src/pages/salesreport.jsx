@@ -1,3 +1,4 @@
+// src/pages/salesreport.jsx
 import React, { useState } from "react";
 import {
   Container,
@@ -19,52 +20,39 @@ import Sidebar from "../components/Sidebar";
 import Navbar2 from "../components/navbar2";
 
 const SalesReport = () => {
-  const [activeTab, setActiveTab] = useState("All Orders");
+  // Tab label is static for now; no setter needed to avoid no-unused-vars.
+  const activeTab = "All Orders";
+
   const [searchQuery, setSearchQuery] = useState("");
   const [showFilter, setShowFilter] = useState(false);
   const [filterPayment, setFilterPayment] = useState("All");
   const [filterStatus, setFilterStatus] = useState("All");
 
   const orders = [
-    {
-      id: "021231",
-      product: "Pipes",
-      user: "Napoleon",
-      price: "₦20,000",
-      date: "04/17/23",
-      payment: "Paid",
-      status: "Done",
-    },
-    {
-      id: "021232",
-      product: "Bolts",
-      user: "Joseph",
-      price: "₦15,000",
-      date: "04/18/23",
-      payment: "Unpaid",
-      status: "Canceled",
-    },
-    {
-      id: "021233",
-      product: "Nails",
-      user: "Mary",
-      price: "₦10,000",
-      date: "04/19/23",
-      payment: "Paid",
-      status: "Done",
-    },
+    { id: "021231", product: "Pipes", user: "Napoleon", price: "₦20,000", date: "04/17/23", payment: "Paid", status: "Done" },
+    { id: "021232", product: "Bolts", user: "Joseph", price: "₦15,000", date: "04/18/23", payment: "Unpaid", status: "Canceled" },
+    { id: "021233", product: "Nails", user: "Mary", price: "₦10,000", date: "04/19/23", payment: "Paid", status: "Done" },
   ];
+
+  // For future navigation or modal open; avoids invalid anchor usage.
+  const handleView = (orderId) => {
+    // Why: keep UX accessible; replace hash anchors with a proper action.
+    // TODO: navigate to order details route or open a modal.
+    // e.g., navigate(`/orders/${orderId}`)
+    // For now:
+    // eslint-disable-next-line no-console
+    console.log("View order:", orderId);
+  };
 
   // 🔍 Search + Filter
   const filteredOrders = orders.filter((order) => {
+    const q = searchQuery.toLowerCase();
     const matchesSearch =
-      order.id.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      order.product.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      order.user.toLowerCase().includes(searchQuery.toLowerCase());
+      order.id.toLowerCase().includes(q) ||
+      order.product.toLowerCase().includes(q) ||
+      order.user.toLowerCase().includes(q);
 
-    const matchesPayment =
-      filterPayment === "All" || order.payment === filterPayment;
-
+    const matchesPayment = filterPayment === "All" || order.payment === filterPayment;
     const matchesStatus = filterStatus === "All" || order.status === filterStatus;
 
     return matchesSearch && matchesPayment && matchesStatus;
@@ -125,8 +113,9 @@ const SalesReport = () => {
                   placeholder="Search for id, name, product"
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
+                  aria-label="Search orders by id, product, or user"
                 />
-                <Button variant="outline-secondary">
+                <Button variant="outline-secondary" aria-label="Search">
                   <FaSearch />
                 </Button>
               </InputGroup>
@@ -167,7 +156,7 @@ const SalesReport = () => {
               <thead>
                 <tr>
                   <th>
-                    <Form.Check type="checkbox" />
+                    <Form.Check type="checkbox" aria-label="Select all orders" />
                   </th>
                   <th>Orders</th>
                   <th>Users</th>
@@ -182,19 +171,24 @@ const SalesReport = () => {
                 {filteredOrders.map((order, index) => (
                   <tr key={index}>
                     <td>
-                      <Form.Check type="checkbox" />
+                      <Form.Check type="checkbox" aria-label={`Select order ${order.id}`} />
                     </td>
                     <td>
                       <img
                         src="/item.jpg"
-                        alt="product"
+                        alt={`${order.product}`}
                         width="30"
                         height="30"
                         className="me-2"
                       />
-                      <a href="#" className="fw-bold text-decoration-none">
+                      <Button
+                        variant="link"
+                        className="fw-bold text-decoration-none p-0 align-baseline"
+                        onClick={() => handleView(order.id)}
+                        aria-label={`View order ${order.id}`}
+                      >
                         {order.id}
-                      </a>
+                      </Button>
                       <br />
                       {order.product}
                     </td>
@@ -203,11 +197,7 @@ const SalesReport = () => {
                     <td>{order.date}</td>
                     <td>
                       <span
-                        className={`badge ${
-                          order.payment === "Paid"
-                            ? "bg-success"
-                            : "bg-warning"
-                        }`}
+                        className={`badge ${order.payment === "Paid" ? "bg-success" : "bg-warning"}`}
                         style={{
                           fontSize: "14px",
                           height: "40px",
@@ -220,9 +210,7 @@ const SalesReport = () => {
                     </td>
                     <td>
                       <span
-                        className={`badge ${
-                          order.status === "Done" ? "bg-primary" : "bg-danger"
-                        }`}
+                        className={`badge ${order.status === "Done" ? "bg-primary" : "bg-danger"}`}
                         style={{
                           fontSize: "14px",
                           height: "40px",
@@ -235,14 +223,11 @@ const SalesReport = () => {
                     </td>
                     <td>
                       <Dropdown>
-                        <Dropdown.Toggle
-                          as="span"
-                          style={{ cursor: "pointer" }}
-                        >
+                        <Dropdown.Toggle as="span" style={{ cursor: "pointer" }} aria-label={`Actions for ${order.id}`}>
                           <BsThreeDotsVertical />
                         </Dropdown.Toggle>
                         <Dropdown.Menu>
-                          <Dropdown.Item>Edit</Dropdown.Item>
+                          <Dropdown.Item onClick={() => handleView(order.id)}>Edit</Dropdown.Item>
                           <Dropdown.Item>Delete</Dropdown.Item>
                         </Dropdown.Menu>
                       </Dropdown>
@@ -279,6 +264,7 @@ const SalesReport = () => {
               <Form.Select
                 value={filterPayment}
                 onChange={(e) => setFilterPayment(e.target.value)}
+                aria-label="Filter by payment status"
               >
                 <option>All</option>
                 <option>Paid</option>
@@ -291,6 +277,7 @@ const SalesReport = () => {
               <Form.Select
                 value={filterStatus}
                 onChange={(e) => setFilterStatus(e.target.value)}
+                aria-label="Filter by order status"
               >
                 <option>All</option>
                 <option>Done</option>
